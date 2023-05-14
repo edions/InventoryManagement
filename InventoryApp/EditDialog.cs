@@ -43,12 +43,13 @@ namespace InventoryApp
             cmd.ExecuteNonQuery();
             con.Close();
             DialogResult = DialogResult.OK;
+            Close();
         }
 
         //CANCEL BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

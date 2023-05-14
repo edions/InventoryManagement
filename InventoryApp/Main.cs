@@ -11,10 +11,11 @@ namespace InventoryApp
         public Main()
         {
             InitializeComponent();
+            DisplayData();
         }
 
         //FETCH DATA FROM DATABASE
-        public void display_data()
+        public void DisplayData()
         {
             con.Open();
             SqlCommand cmd = con.CreateCommand();
@@ -28,24 +29,15 @@ namespace InventoryApp
             con.Close();
         }
 
-        //Refresh DataGridView when Main form load
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            display_data();
-        }
-
         //INSERT BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
             InsertDialog dlg = new InsertDialog();
-            dlg.FormClosed += new FormClosedEventHandler(dlg_FormClosed);
-            dlg.ShowDialog(this);
-        }
-
-        //Refresh DataGridView when "Insert Dailog" is close
-        private void dlg_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            display_data();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                //Refresh DataGridView when "Insert Dailog" is close
+                DisplayData();
+            }
         }
 
         //UPDATE BUTTON
@@ -66,8 +58,8 @@ namespace InventoryApp
                 EditDialog dlg = new EditDialog(id, name, price, stock, unit, category);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    // If EditDailog was closed with SAVE, refresh the DataGridView
-                    display_data();
+                    //Refresh DataGridView when "Edit Dailog" is close
+                    DisplayData();
                 }
             }
         }

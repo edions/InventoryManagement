@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Table]
+﻿CREATE TABLE [dbo].[Inventory]
 (
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [NAME] VARCHAR(50) NULL, 

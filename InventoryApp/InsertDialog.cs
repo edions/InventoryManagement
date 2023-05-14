@@ -32,13 +32,14 @@ namespace InventoryApp
             cmd.Parameters.AddWithValue("@category", comboBox1.Text);
             cmd.ExecuteNonQuery();
             con.Close();
-            this.Close();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         //CANCEL BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

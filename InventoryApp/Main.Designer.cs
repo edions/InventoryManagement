@@ -104,7 +104,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Main";
             this.Text = "Inventory";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
