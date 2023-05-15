@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace InventoryApp
 {
-    public partial class EditDialog : Form
+    public partial class Edit : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
         readonly private int itemId;
-        public EditDialog(int id, string name, int price, int stock, int unit, string category)
+        public Edit(int id, string name, int price, int stock, int unit, string category)
         {
             InitializeComponent();
 
@@ -21,10 +21,14 @@ namespace InventoryApp
             comboBox1.Text = category;
 
             //ComboBox Item
-            comboBox1.Items.Add("ITEM1");
-            comboBox1.Items.Add("ITEM2");
-            comboBox1.Items.Add("ITEM3");
-            comboBox1.Items.Add("ITEM4");
+            con.Open();
+            SqlCommand command = new SqlCommand("SELECT CategoryItem FROM Category", con);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBox1.Items.Add(reader["CategoryItem"].ToString());
+            }
+            con.Close();
         }
 
         //UPDATE BUTTON
@@ -41,6 +45,14 @@ namespace InventoryApp
             cmd.Parameters.AddWithValue("@category", comboBox1.Text);
             cmd.Parameters.AddWithValue("@id", itemId);
             cmd.ExecuteNonQuery();
+
+            string selectedItem = comboBox1.Text.Trim();
+            if (!string.IsNullOrEmpty(selectedItem) && comboBox1.SelectedIndex == -1)
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO Category (CategoryItem) VALUES (@categoryitem)", con);
+                command.Parameters.AddWithValue("@categoryitem", selectedItem);
+                int rowsAffected = command.ExecuteNonQuery();
+            }
             con.Close();
             DialogResult = DialogResult.OK;
             Close();

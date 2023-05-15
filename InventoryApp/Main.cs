@@ -20,7 +20,7 @@ namespace InventoryApp
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Inventory";
+            cmd.CommandText = "select * from Product";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -32,7 +32,7 @@ namespace InventoryApp
         //INSERT BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
-            InsertDialog dlg = new InsertDialog();
+            Insert dlg = new Insert();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //Refresh DataGridView when "Insert Dailog" is close
@@ -55,7 +55,7 @@ namespace InventoryApp
                 string category = row.Cells["category"].Value.ToString();
 
                 // Pass the data to EditDailog
-                EditDialog dlg = new EditDialog(id, name, price, stock, unit, category);
+                Edit dlg = new Edit(id, name, price, stock, unit, category);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     //Refresh DataGridView when "Edit Dailog" is close
@@ -78,7 +78,7 @@ namespace InventoryApp
                     // Construct the DELETE statement
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "DELETE FROM Inventory WHERE ID = @ID";
+                    cmd.CommandText = "DELETE FROM Product WHERE ID = @ID";
                     cmd.Parameters.AddWithValue("@ID", id);
 
                     // Execute the DELETE statement

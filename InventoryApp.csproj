@@ -68,28 +68,28 @@
     <Compile Include="InventoryApp\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\EditDialog.cs">
+    <Compile Include="InventoryApp\dlg\Edit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\EditDialog.Designer.cs">
-      <DependentUpon>EditDialog.cs</DependentUpon>
+    <Compile Include="InventoryApp\dlg\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\InsertDialog.cs">
+    <Compile Include="InventoryApp\dlg\Insert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\InsertDialog.Designer.cs">
-      <DependentUpon>InsertDialog.cs</DependentUpon>
+    <Compile Include="InventoryApp\dlg\Insert.Designer.cs">
+      <DependentUpon>Insert.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryApp\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="InventoryApp\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\EditDialog.resx">
-      <DependentUpon>EditDialog.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryApp\dlg\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\InsertDialog.resx">
-      <DependentUpon>InsertDialog.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryApp\dlg\Insert.resx">
+      <DependentUpon>Insert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
