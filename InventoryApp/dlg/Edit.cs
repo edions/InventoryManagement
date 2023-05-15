@@ -22,8 +22,8 @@ namespace InventoryApp
 
             //ComboBox Item
             con.Open();
-            SqlCommand command = new SqlCommand("SELECT CategoryItem FROM Category", con);
-            SqlDataReader reader = command.ExecuteReader();
+            SqlCommand cmd = new SqlCommand("SELECT CategoryItem FROM Category", con);
+            SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 comboBox1.Items.Add(reader["CategoryItem"].ToString());
@@ -37,7 +37,7 @@ namespace InventoryApp
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "UPDATE Inventory SET name = @name, price = @price, stock = @stock, unit = @unit, category = @category WHERE Id = @id";
+            cmd.CommandText = "UPDATE Product SET name = @name, price = @price, stock = @stock, unit = @unit, category = @category WHERE Id = @id";
             cmd.Parameters.AddWithValue("@name", textBox1.Text);
             cmd.Parameters.AddWithValue("@price", Convert.ToInt32(textBox2.Text));
             cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(textBox3.Text));

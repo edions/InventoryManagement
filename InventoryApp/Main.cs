@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp
 {
@@ -94,6 +95,31 @@ namespace InventoryApp
             else
             {
                 MessageBox.Show("Please select a row to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        //ADD STOCKS BUTTON
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                string name = dataGridView1.SelectedRows[0].Cells["name"].Value.ToString();
+                InsertStock dlg = new InsertStock(name);
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    DisplayData();
+                }
+            }
+        }
+
+        //HISTORY BUTTON
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
+                History historyForm = new History(id);
+                historyForm.ShowDialog();
             }
         }
     }

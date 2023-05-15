@@ -14,8 +14,8 @@ namespace InventoryApp
 
             //ComboBox Item
             con.Open();
-            SqlCommand command = new SqlCommand("SELECT CategoryItem FROM Category", con);
-            SqlDataReader reader = command.ExecuteReader();
+            SqlCommand cmd = new SqlCommand("SELECT CategoryItem FROM Category", con);
+            SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 comboBox1.Items.Add(reader["CategoryItem"].ToString());
