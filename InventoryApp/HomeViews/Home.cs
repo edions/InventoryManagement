@@ -6,16 +6,16 @@ using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp
 {
-    public partial class Main : Form
+    public partial class Home : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
-        public Main()
+        public Home()
         {
             InitializeComponent();
             DisplayData();
         }
 
-        //FETCH DATA FROM DATABASE
+        //FETCH DATA FROM PRODUCT DATABASE
         public void DisplayData()
         {
             con.Open();
@@ -30,7 +30,50 @@ namespace InventoryApp
             con.Close();
         }
 
+        //SEARCH AND DISPLAY RESULTS
+        private void PerformSearch()
+        {
+            con.Open();
+            DataTable dt = new DataTable("Customer");
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE Name LIKE '%' + @SearchTerm + '%' OR Category LIKE '%' + @SearchTerm + '%'", con))
+            {
+                cmd.Parameters.AddWithValue("@SearchTerm", "%" + textBox1.Text + "%");
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+
+            con.Close();
+        }
+
+        //SEARCH BUTTON
+        private void button6_Click(object sender, EventArgs e)
+        {
+            PerformSearch();
+        }
+
+        //IF USER PRESS ENTER KEY
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                PerformSearch();
+                e.Handled = true; // Prevent the beep sound
+            }
+        }
+
+        //RESET DATAGRIDVIEW IF TEXTBOX IS EMPTY
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                PerformSearch();
+            }
+        }
+
         //INSERT BUTTON
+        //Home
         private void button1_Click(object sender, EventArgs e)
         {
             Insert dlg = new Insert();
@@ -42,6 +85,7 @@ namespace InventoryApp
         }
 
         //UPDATE BUTTON
+        //Home
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -66,6 +110,7 @@ namespace InventoryApp
         }
 
         //DELETE BUTTON
+        //Home
         private void button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -88,8 +133,6 @@ namespace InventoryApp
 
                     // Remove the row from the DataGridView
                     dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
-
-                    MessageBox.Show("Record Deleted");
                 }
             }
             else
@@ -99,6 +142,7 @@ namespace InventoryApp
         }
 
         //ADD STOCKS BUTTON
+        //Home
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -113,6 +157,7 @@ namespace InventoryApp
         }
 
         //HISTORY BUTTON
+        //Home
         private void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)

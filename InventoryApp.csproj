@@ -61,52 +61,88 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InventoryApp\ConnectionManager.cs" />
-    <Compile Include="InventoryApp\dlg\InsertStock.cs">
+    <Compile Include="InventoryApp\CategoryViews\EditCat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\dlg\InsertStock.Designer.cs">
+    <Compile Include="InventoryApp\CategoryViews\EditCat.Designer.cs">
+      <DependentUpon>EditCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\InsertCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\InsertCat.Designer.cs">
+      <DependentUpon>InsertCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryApp\ConnectionManager.cs" />
+    <Compile Include="InventoryApp\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\Category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\Category.Designer.cs">
+      <DependentUpon>Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryApp\HomeViews\InsertStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\HomeViews\InsertStock.Designer.cs">
       <DependentUpon>InsertStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\dlg\History.cs">
+    <Compile Include="InventoryApp\HomeViews\History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\dlg\History.Designer.cs">
+    <Compile Include="InventoryApp\HomeViews\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\Main.cs">
+    <Compile Include="InventoryApp\HomeViews\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="InventoryApp\HomeViews\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\dlg\Edit.cs">
+    <Compile Include="InventoryApp\HomeViews\Edit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\dlg\Edit.Designer.cs">
+    <Compile Include="InventoryApp\HomeViews\Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\dlg\Insert.cs">
+    <Compile Include="InventoryApp\HomeViews\Insert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\dlg\Insert.Designer.cs">
+    <Compile Include="InventoryApp\HomeViews\Insert.Designer.cs">
       <DependentUpon>Insert.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryApp\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="InventoryApp\dlg\InsertStock.resx">
+    <EmbeddedResource Include="InventoryApp\CategoryViews\EditCat.resx">
+      <DependentUpon>EditCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryApp\CategoryViews\InsertCat.resx">
+      <DependentUpon>InsertCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryApp\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryApp\CategoryViews\Category.resx">
+      <DependentUpon>Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryApp\HomeViews\InsertStock.resx">
       <DependentUpon>InsertStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\dlg\History.resx">
+    <EmbeddedResource Include="InventoryApp\HomeViews\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryApp\HomeViews\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\dlg\Edit.resx">
+    <EmbeddedResource Include="InventoryApp\HomeViews\Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\dlg\Insert.resx">
+    <EmbeddedResource Include="InventoryApp\HomeViews\Insert.resx">
       <DependentUpon>Insert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -129,7 +165,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="InventoryApp\App.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
