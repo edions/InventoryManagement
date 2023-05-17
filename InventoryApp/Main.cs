@@ -30,6 +30,48 @@ namespace InventoryApp
             con.Close();
         }
 
+        //SEARCH AND DISPLAY RESULTS
+        private void PerformSearch()
+        {
+            con.Open();
+            DataTable dt = new DataTable("Customer");
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE Name LIKE '%' + @SearchTerm + '%' OR Category LIKE '%' + @SearchTerm + '%'", con))
+            {
+                cmd.Parameters.AddWithValue("@SearchTerm", "%" + textBox1.Text + "%");
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+
+            con.Close();
+        }
+
+        //SEARCH BUTTON
+        private void button6_Click(object sender, EventArgs e)
+        {
+            PerformSearch();
+        }
+
+        //IF USER PRESS ENTER KEY
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                PerformSearch();
+                e.Handled = true; // Prevent the beep sound
+            }
+        }
+
+        //RESET DATAGRIDVIEW IF TEXTBOX IS EMPTY
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                PerformSearch();
+            }
+        }
+
         //INSERT BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
