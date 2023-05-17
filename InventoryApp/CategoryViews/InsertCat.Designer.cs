@@ -93,6 +93,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "InsertCat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Category";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
