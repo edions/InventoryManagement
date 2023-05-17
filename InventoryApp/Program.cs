@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InventoryApp.InventoryApp;
+using System;
 using System.Windows.Forms;
 
 namespace InventoryApp
@@ -16,7 +14,7 @@ namespace InventoryApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new MainView());
         }
     }
 }

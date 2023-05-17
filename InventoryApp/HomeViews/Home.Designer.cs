@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp
 {
-    partial class Main
+    partial class Home
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(672, 72);
+            this.button1.Location = new System.Drawing.Point(672, 79);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 30);
             this.button1.TabIndex = 0;
@@ -55,7 +55,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(672, 108);
+            this.button2.Location = new System.Drawing.Point(672, 115);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 30);
             this.button2.TabIndex = 1;
@@ -66,7 +66,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(672, 144);
+            this.button3.Location = new System.Drawing.Point(672, 151);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 30);
             this.button3.TabIndex = 2;
@@ -109,7 +109,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(672, 390);
+            this.button4.Location = new System.Drawing.Point(672, 408);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 30);
             this.button4.TabIndex = 4;
@@ -120,7 +120,7 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(672, 426);
+            this.button5.Location = new System.Drawing.Point(672, 444);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(90, 30);
             this.button5.TabIndex = 5;
@@ -150,7 +150,7 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // Main
+            // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,8 +163,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Main";
-            this.Text = "Inventory";
+            this.Name = "Home";
+            this.Text = "Home";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

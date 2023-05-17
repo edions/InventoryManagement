@@ -6,16 +6,16 @@ using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp
 {
-    public partial class Main : Form
+    public partial class Home : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
-        public Main()
+        public Home()
         {
             InitializeComponent();
             DisplayData();
         }
 
-        //FETCH DATA FROM DATABASE
+        //FETCH DATA FROM PRODUCT DATABASE
         public void DisplayData()
         {
             con.Open();
@@ -73,6 +73,7 @@ namespace InventoryApp
         }
 
         //INSERT BUTTON
+        //Home
         private void button1_Click(object sender, EventArgs e)
         {
             Insert dlg = new Insert();
@@ -84,6 +85,7 @@ namespace InventoryApp
         }
 
         //UPDATE BUTTON
+        //Home
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -108,6 +110,7 @@ namespace InventoryApp
         }
 
         //DELETE BUTTON
+        //Home
         private void button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -141,6 +144,7 @@ namespace InventoryApp
         }
 
         //ADD STOCKS BUTTON
+        //Home
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -155,6 +159,7 @@ namespace InventoryApp
         }
 
         //HISTORY BUTTON
+        //Home
         private void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
