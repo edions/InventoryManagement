@@ -133,8 +133,6 @@ namespace InventoryApp
 
                     // Remove the row from the DataGridView
                     dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
-
-                    MessageBox.Show("Record Deleted");
                 }
             }
             else

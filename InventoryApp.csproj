@@ -61,6 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InventoryApp\CategoryViews\EditCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\EditCat.Designer.cs">
+      <DependentUpon>EditCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\InsertCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\CategoryViews\InsertCat.Designer.cs">
+      <DependentUpon>InsertCat.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryApp\ConnectionManager.cs" />
     <Compile Include="InventoryApp\MainView.cs">
       <SubType>Form</SubType>
@@ -106,6 +118,12 @@
     </Compile>
     <Compile Include="InventoryApp\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="InventoryApp\CategoryViews\EditCat.resx">
+      <DependentUpon>EditCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryApp\CategoryViews\InsertCat.resx">
+      <DependentUpon>InsertCat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryApp\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
