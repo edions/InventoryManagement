@@ -7,6 +7,10 @@ namespace InventoryApp.InventoryApp
     public partial class MainView : Form
     {
         private readonly Home homeForm; // Add a private field to store the instance of the "Home" form
+        private bool sidebarExpanded = true;
+        private const int MinSidebarWidth = 60;
+        private const int MaxSidebarWidth = 212;
+        private const int AnimationStep = 10;
         public MainView()
         {
             InitializeComponent();
@@ -93,13 +97,14 @@ namespace InventoryApp.InventoryApp
             }
         }
 
-        bool sidebarExpanded = true;
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (sidebarExpanded)
             {
-                panel1.Width -= 10;
-                if (panel1.Width <= 60)
+                panel1.Width -= AnimationStep;
+                panel2.Left -= AnimationStep;
+                panel2.Width += AnimationStep;
+                if (panel1.Width <= MinSidebarWidth)
                 {
                     sidebarExpanded = false;
                     timer1.Stop();
@@ -107,17 +112,26 @@ namespace InventoryApp.InventoryApp
             }
             else
             {
-                panel1.Width += 10;
-                if (panel1.Width >= 212)
+                panel1.Width += AnimationStep;
+                panel2.Left += AnimationStep;
+                panel2.Width -= AnimationStep;
+                if (panel1.Width >= MaxSidebarWidth)
                 {
                     sidebarExpanded = true;
                     timer1.Stop();
                 }
             }
+            if (!timer1.Enabled)
+            {
+                panel1.ResumeLayout();
+                panel2.ResumeLayout();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
             timer1.Start();
         }
     }
