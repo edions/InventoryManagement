@@ -92,5 +92,33 @@ namespace InventoryApp.InventoryApp
                 }
             }
         }
+
+        bool sidebarExpanded = true;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpanded)
+            {
+                panel1.Width -= 10;
+                if (panel1.Width <= 60)
+                {
+                    sidebarExpanded = false;
+                    timer1.Stop();
+                }
+            }
+            else
+            {
+                panel1.Width += 10;
+                if (panel1.Width >= 212)
+                {
+                    sidebarExpanded = true;
+                    timer1.Stop();
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
     }
 }
