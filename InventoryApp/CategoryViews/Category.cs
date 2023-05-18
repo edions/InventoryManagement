@@ -70,7 +70,7 @@ namespace InventoryApp.InventoryApp.Views
             {
                 int id = (int)dataGridView1.SelectedRows[0].Cells["ID"].Value;
 
-                if (MessageBox.Show("Are you sure want to delete this item?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure want to remove this category?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     con.Open();
 
@@ -90,7 +90,7 @@ namespace InventoryApp.InventoryApp.Views
             }
             else
             {
-                MessageBox.Show("Please select a row to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a row to remove.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
