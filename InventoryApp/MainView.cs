@@ -97,6 +97,7 @@ namespace InventoryApp.InventoryApp
             }
         }
 
+        //SIDEBAR CONTROL
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (sidebarExpanded)
@@ -125,11 +126,24 @@ namespace InventoryApp.InventoryApp
             {
                 panel1.ResumeLayout();
                 panel2.ResumeLayout();
+
+                // Enable the button when the animation is complete
+                button4.Enabled = true;
             }
         }
 
+        //HAMBURGER BUTTON
         private void button4_Click(object sender, EventArgs e)
         {
+            if (timer1.Enabled)
+            {
+                // Animation is already in progress, no need to start it again
+                return;
+            }
+
+            // Disable the button during the animation
+            button4.Enabled = false;
+
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             timer1.Start();
