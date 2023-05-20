@@ -1,4 +1,5 @@
-﻿INSERT INTO [dbo].[Category] ([CategoryItem])
+-- Insert categories
+INSERT INTO [dbo].[Category] ([CategoryItem])
 VALUES
 ('Electronics'),
 ('Footwear'),
@@ -17,6 +18,7 @@ VALUES
 ('Music'),
 ('Pets');
 
+-- Insert products
 INSERT INTO [dbo].[Product] ([Name], [Price], [Stock], [Unit], [Category])
 VALUES
 ('iPhone 13 Pro', 1099, 50, 1, 'Electronics'),
