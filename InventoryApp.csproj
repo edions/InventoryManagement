@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InventoryApp\CartViews\Cart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\CartViews\Cart.Designer.cs">
+      <DependentUpon>Cart.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryApp\CategoryViews\EditCat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </Compile>
     <Compile Include="InventoryApp\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="InventoryApp\CartViews\Cart.resx">
+      <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryApp\CategoryViews\EditCat.resx">
       <DependentUpon>EditCat.cs</DependentUpon>
     </EmbeddedResource>
