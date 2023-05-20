@@ -97,10 +97,7 @@ namespace InventoryApp.InventoryApp
         private void button3_Click(object sender, EventArgs e)
         {
             Cart dlg = new Cart();
-            if(dlg.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            dlg.ShowDialog();
         }
     }
 }

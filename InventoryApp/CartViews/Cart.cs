@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System;
+using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp.InventoryApp.Views
 {
@@ -33,8 +34,7 @@ namespace InventoryApp.InventoryApp.Views
             }
         }
 
-        //CHECKOUT BUTTON
-        //Cart
+        //CHECKOUT BUTTON - Cart
         private void button1_Click(object sender, System.EventArgs e)
         {
             using (SqlConnection con = ConnectionManager.GetConnection())
@@ -63,8 +63,7 @@ namespace InventoryApp.InventoryApp.Views
             }
         }
 
-        //UPDATE BUTTON
-        //Category
+        //REMOVE BUTTON - Cart
         private void button2_Click(object sender, System.EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -78,7 +77,7 @@ namespace InventoryApp.InventoryApp.Views
                     // Construct the DELETE statement
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "DELETE FROM Category WHERE ID = @ID";
+                    cmd.CommandText = "DELETE FROM Cart WHERE ID = @ID";
                     cmd.Parameters.AddWithValue("@ID", id);
 
                     // Execute the DELETE statement
@@ -93,6 +92,13 @@ namespace InventoryApp.InventoryApp.Views
             {
                 MessageBox.Show("Please select a row to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        //TRANSACTION BUTTON - Cart
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Transaction dlg = new Transaction();
+            dlg.ShowDialog();
         }
     }
 }
