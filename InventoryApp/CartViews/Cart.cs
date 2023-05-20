@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System;
 
 namespace InventoryApp.InventoryApp.Views
 {
@@ -10,29 +11,56 @@ namespace InventoryApp.InventoryApp.Views
         public Cart()
         {
             InitializeComponent();
-            CategoryDisplay();
+            DisplayCartItem();
         }
 
         //FETCH DATA FROM CATEGORY DATABASE
-        private void CategoryDisplay()
+        private void DisplayCartItem()
         {
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Category";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
+            using (SqlConnection con = ConnectionManager.GetConnection())
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cart", con))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
+
+                con.Close();
+            }
         }
 
-        //ADD BUTTON
+        //CHECKOUT BUTTON
         //Cart
         private void button1_Click(object sender, System.EventArgs e)
         {
-            
+            using (SqlConnection con = ConnectionManager.GetConnection())
+            {
+                con.Open();
+
+                // Retrieve the total price from the Cart table
+                string query = "SELECT SUM(Price) AS TotalPrice FROM Cart";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        int totalPrice = Convert.ToInt32(result);
+
+                        // Pass the total price to the Total form and display it
+                        Checkout dlg = new Checkout(totalPrice);
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            DisplayCartItem();
+                        }
+                    }
+                }
+
+                con.Close();
+            }
         }
 
         //UPDATE BUTTON

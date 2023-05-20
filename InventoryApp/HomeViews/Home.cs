@@ -13,6 +13,7 @@ namespace InventoryApp
         {
             InitializeComponent();
             DisplayData();
+            AddToCart();
         }
 
         //FETCH DATA FROM PRODUCT DATABASE
@@ -165,6 +166,59 @@ namespace InventoryApp
                 int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
                 History historyForm = new History(id);
                 historyForm.ShowDialog();
+            }
+        }
+
+        //ADD TO CART DATAGRID BUTTON
+        private void AddToCart()
+        {
+            // Create a new DataGridViewButtonColumn
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            //buttonColumn.Name = "";
+            buttonColumn.Text = "Add to Cart";
+            buttonColumn.UseColumnTextForButtonValue = true;
+
+            // Add the button column to the DataGridView
+            dataGridView1.Columns.Add(buttonColumn);
+
+            // Unsubscribe the event handler to prevent multiple subscriptions
+            dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
+
+            // Handle the CellContentClick event of the DataGridView
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the clicked cell belongs to the button column
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                // Get the values from the selected row
+                string name = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Price"].Value);
+
+                // Save the values in the "Cart" database
+                using (SqlConnection connection = ConnectionManager.GetConnection())
+                {
+                    connection.Open();
+
+                    // Assuming you have a "Cart" table with columns "Name" and "Price"
+                    string insertQuery = "INSERT INTO Cart (Name, Price) VALUES (@Name, @Price)";
+
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Price", price);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+
+                // Provide feedback or perform any additional actions
+                MessageBox.Show("Product added to cart.");
             }
         }
     }

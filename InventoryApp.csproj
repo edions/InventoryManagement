@@ -67,6 +67,12 @@
     <Compile Include="InventoryApp\CartViews\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryApp\CartViews\Checkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryApp\CartViews\Checkout.Designer.cs">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryApp\CategoryViews\EditCat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="InventoryApp\CartViews\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryApp\CartViews\Checkout.resx">
+      <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryApp\CategoryViews\EditCat.resx">
       <DependentUpon>EditCat.cs</DependentUpon>
