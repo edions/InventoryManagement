@@ -90,7 +90,7 @@ namespace InventoryApp.InventoryApp.Views
             }
             else
             {
-                MessageBox.Show("Please select a row to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Cart is empty.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

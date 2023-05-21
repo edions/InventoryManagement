@@ -48,7 +48,7 @@
             this.groupBox1.Size = new System.Drawing.Size(642, 477);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "CategoryList";
+            this.groupBox1.Text = "Cart";
             // 
             // dataGridView1
             // 

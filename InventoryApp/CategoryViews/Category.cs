@@ -35,13 +35,12 @@ namespace InventoryApp.InventoryApp.Views
             InsertCat dlg = new InsertCat();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                //Refresh DataGridView when "Insert Dailog" is close
+                //Refresh DataGridView when "InsertCat" is close
                 CategoryDisplay();
             }
         }
 
-        //UPDATE BUTTON
-        //Category
+        //UPDATE BUTTON - Category
         private void button2_Click(object sender, System.EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -51,7 +50,7 @@ namespace InventoryApp.InventoryApp.Views
                 int id = (int)row.Cells["Id"].Value;
                 string categoryItem = row.Cells["CategoryItem"].Value.ToString();
 
-                // Pass the data to EditDialog
+                // Pass the data to EditCat
                 EditCat dlg = new EditCat(id, categoryItem);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -62,8 +61,7 @@ namespace InventoryApp.InventoryApp.Views
 
         }
 
-        //DELETE BUTTON
-        //Category
+        //DELETE BUTTON - Category
         private void button3_Click(object sender, System.EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)

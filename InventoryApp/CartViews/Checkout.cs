@@ -36,38 +36,26 @@ namespace InventoryApp
             // Save the transaction data to the database
             try
             {
-                using (SqlConnection connection = ConnectionManager.GetConnection())
+                con.Open();
+                string insertQuery = "INSERT INTO [Transaction] (Total, Cash, DiscountPercent, DiscountAmount, [Change]) VALUES (@Total, @Cash, @DiscountPercent, @DiscountAmount, @Change)";
+
+                using (SqlCommand command = new SqlCommand(insertQuery, con))
                 {
-                    connection.Open();
-
-                    string insertQuery = "INSERT INTO [Transaction] (Total, Cash, DiscountPercent, DiscountAmount, [Change]) VALUES (@Total, @Cash, @DiscountPercent, @DiscountAmount, @Change)";
-
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@Total", total);
-                        command.Parameters.AddWithValue("@Cash", cash);
-                        command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
-                        command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
-                        command.Parameters.AddWithValue("@Change", change);
-
-                        command.ExecuteNonQuery();
-                    }
-
-                    // Delete the data from the Cart table
-                    string deleteQuery = "DELETE FROM [Cart]";
-                    using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
-                    {
-                        deleteCommand.ExecuteNonQuery();
-                    }
-
-                    connection.Close();
+                    command.Parameters.AddWithValue("@Total", total);
+                    command.Parameters.AddWithValue("@Cash", cash);
+                    command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
+                    command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
+                    command.Parameters.AddWithValue("@Change", change);
+                    command.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Transaction saved successfully. Cart data deleted.");
-
-                // Clear the input fields
-                textBox2.Text = "";
-                textBox1.Text = "";
+                // Delete the data from the Cart table
+                string deleteQuery = "DELETE FROM [Cart]";
+                using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, con))
+                {
+                    deleteCommand.ExecuteNonQuery();
+                }
+                con.Close();
             }
             catch (Exception ex)
             {

@@ -18,7 +18,6 @@ namespace InventoryApp.InventoryApp.dlg
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
-
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM [Transaction]", con))
                 {
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -26,7 +25,6 @@ namespace InventoryApp.InventoryApp.dlg
                     da.Fill(dt);
                     dataGridView1.DataSource = dt;
                 }
-
                 con.Close();
             }
         }

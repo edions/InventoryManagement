@@ -73,8 +73,7 @@ namespace InventoryApp
             }
         }
 
-        //INSERT BUTTON
-        //Home
+        //INSERT BUTTON - Home
         private void button1_Click(object sender, EventArgs e)
         {
             Insert dlg = new Insert();
@@ -85,8 +84,7 @@ namespace InventoryApp
             }
         }
 
-        //UPDATE BUTTON
-        //Home
+        //UPDATE BUTTON - Home
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -110,8 +108,7 @@ namespace InventoryApp
             }
         }
 
-        //DELETE BUTTON
-        //Home
+        //DELETE BUTTON - Home
         private void button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -142,8 +139,7 @@ namespace InventoryApp
             }
         }
 
-        //ADD STOCKS BUTTON
-        //Home
+        //ADD STOCKS BUTTON - Home
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -157,8 +153,7 @@ namespace InventoryApp
             }
         }
 
-        //HISTORY BUTTON
-        //Home
+        //HISTORY BUTTON - Home
         private void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -169,28 +164,22 @@ namespace InventoryApp
             }
         }
 
-        //ADD TO CART DATAGRID BUTTON
+        //ADD_TO_CART DATAGRID BUTTON - Home
         private void AddToCart()
         {
-            // Create a new DataGridViewButtonColumn
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            //buttonColumn.Name = "";
-            buttonColumn.Text = "Add to Cart";
-            buttonColumn.UseColumnTextForButtonValue = true;
-
-            // Add the button column to the DataGridView
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn
+            {
+                Text = "Add to Cart",
+                UseColumnTextForButtonValue = true
+            };
             dataGridView1.Columns.Add(buttonColumn);
-
-            // Unsubscribe the event handler to prevent multiple subscriptions
             dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
-
-            // Handle the CellContentClick event of the DataGridView
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 
+        //DATAGRIDVIEW BUTTON EVENT - Home
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the clicked cell belongs to the button column
             if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
@@ -199,25 +188,21 @@ namespace InventoryApp
                 int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Price"].Value);
 
                 // Save the values in the "Cart" database
-                using (SqlConnection connection = ConnectionManager.GetConnection())
+                using (SqlConnection con = ConnectionManager.GetConnection())
                 {
-                    connection.Open();
-
-                    // Assuming you have a "Cart" table with columns "Name" and "Price"
+                    con.Open();
                     string insertQuery = "INSERT INTO Cart (Name, Price) VALUES (@Name, @Price)";
 
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    using (SqlCommand command = new SqlCommand(insertQuery, con))
                     {
                         command.Parameters.AddWithValue("@Name", name);
                         command.Parameters.AddWithValue("@Price", price);
-
                         command.ExecuteNonQuery();
                     }
-
-                    connection.Close();
+                    con.Close();
                 }
 
-                // Provide feedback or perform any additional actions
+                // Provide feedback when item successfully added to cart
                 MessageBox.Show("Product added to cart.");
             }
         }
