@@ -41,12 +41,12 @@ namespace InventoryApp.InventoryApp.Views
             {
                 con.Open();
 
-                // Retrieve the total price from the Cart table
-                string query = "SELECT SUM(Price) AS TotalPrice FROM Cart";
+                // Retrieve the total price based on the quantity from the Cart table
+                string query = "SELECT SUM(Price * Quantity) AS TotalPrice FROM Cart";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     object result = command.ExecuteScalar();
-                    if (result != DBNull.Value)
+                    if (result != DBNull.Value && result != null)
                     {
                         int totalPrice = Convert.ToInt32(result);
 
@@ -56,6 +56,11 @@ namespace InventoryApp.InventoryApp.Views
                         {
                             DisplayCartItem();
                         }
+                    }
+                    else
+                    {
+                        // Cart table is empty, handle the scenario here
+                        MessageBox.Show("Cart is empty.", "Empty Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
 
@@ -90,7 +95,7 @@ namespace InventoryApp.InventoryApp.Views
             }
             else
             {
-                MessageBox.Show("Cart is empty.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Cart is empty.", "Empty Cart", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

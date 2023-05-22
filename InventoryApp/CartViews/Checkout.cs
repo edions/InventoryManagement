@@ -11,14 +11,40 @@ namespace InventoryApp
         {
             InitializeComponent();
             label3.Text = totalPrice.ToString();
+            InitializeComboBox(comboBox1);
         }
+
+        public static void InitializeComboBox(ComboBox comboBox)
+        {
+            comboBox.Items.Add(new ComboBoxItem { Value = 10, Description = "10% off" });
+            comboBox.Items.Add(new ComboBoxItem { Value = 15, Description = "15% off" });
+            comboBox.Items.Add(new ComboBoxItem { Value = 30, Description = "30% off" });
+            comboBox.Items.Add(new ComboBoxItem { Value = 50, Description = "50% off" });
+
+        }
+
+        public class ComboBoxItem
+        {
+            public double Value { get; set; }
+            public string Description { get; set; }
+
+            public override string ToString()
+            {
+                return Description;
+            }
+        }
+
 
         //INSERT STOCK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
             int total = Convert.ToInt32(label3.Text);
             int cash = string.IsNullOrWhiteSpace(textBox2.Text) ? 0 : Convert.ToInt32(textBox2.Text);
-            double discountPercent = string.IsNullOrWhiteSpace(textBox1.Text) ? 0 : Convert.ToDouble(textBox1.Text);
+            double discountPercent = 0;
+            if (comboBox1.SelectedItem is ComboBoxItem selectedItem)
+            {
+                discountPercent = selectedItem.Value;
+            }
 
             // Calculate the discount amount
             double discountAmount = total * (discountPercent / 100);
