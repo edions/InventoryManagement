@@ -8,8 +8,8 @@ namespace InventoryApp.InventoryApp
     {
         private readonly Home homeForm; // Add a private field to store the instance of the "Home" form
         private bool sidebarExpanded = true;
-        private const int MinSidebarWidth = 60;
-        private const int MaxSidebarWidth = 212;
+        private const int MinSidebarWidth = 59;
+        private const int MaxSidebarWidth = 200;
         private const int AnimationStep = 10;
         public MainView()
         {

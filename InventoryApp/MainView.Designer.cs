@@ -51,7 +51,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(181, 501);
+            this.panel1.Size = new System.Drawing.Size(200, 501);
             this.panel1.TabIndex = 0;
             // 
             // button4
@@ -81,7 +81,7 @@
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(12, 456);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(162, 33);
+            this.button3.Size = new System.Drawing.Size(181, 33);
             this.button3.TabIndex = 3;
             this.button3.Text = "         Setting";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,7 +97,7 @@
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.Location = new System.Drawing.Point(12, 99);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(162, 33);
+            this.button2.Size = new System.Drawing.Size(181, 33);
             this.button2.TabIndex = 2;
             this.button2.Text = "         Category";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,7 +114,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(12, 60);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 33);
+            this.button1.Size = new System.Drawing.Size(181, 33);
             this.button1.TabIndex = 1;
             this.button1.Text = "         Home";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,9 +126,9 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Location = new System.Drawing.Point(180, 0);
+            this.panel2.Location = new System.Drawing.Point(199, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(619, 501);
+            this.panel2.Size = new System.Drawing.Size(600, 501);
             this.panel2.TabIndex = 1;
             // 
             // timer1
