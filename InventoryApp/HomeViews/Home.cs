@@ -203,7 +203,7 @@ namespace InventoryApp
                             int existingQuantity = Convert.ToInt32(reader["Quantity"]);
                             int existingPrice = Convert.ToInt32(reader["Price"]);
                             int newQuantity = existingQuantity + 1;
-                            int newPrice = existingPrice + price;
+                            int newPrice = existingPrice;
 
                             reader.Close();
 

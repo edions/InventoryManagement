@@ -68,6 +68,26 @@ namespace InventoryApp.InventoryApp.Views
             }
         }
 
+        //ADD QUANTITY BYTTON - Cart
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the data from the selected row
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                int id = (int)row.Cells["Id"].Value;
+                int quantity = (int)row.Cells["Quantity"].Value;
+
+                // Pass the data to EditCat
+                AddQuantity dlg = new AddQuantity(id, quantity);
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    // Refresh DataGridView when "EditCategory Dialog" is closed
+                    DisplayCartItem();
+                }
+            }
+        }
+
         //REMOVE BUTTON - Cart
         private void button2_Click(object sender, System.EventArgs e)
         {

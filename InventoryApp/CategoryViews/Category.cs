@@ -58,7 +58,6 @@ namespace InventoryApp.InventoryApp.Views
                     CategoryDisplay();
                 }
             }
-
         }
 
         //DELETE BUTTON - Category
