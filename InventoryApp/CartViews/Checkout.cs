@@ -137,11 +137,14 @@ namespace InventoryApp
             // Calculate the change
             double change = cash - (total - discountAmount);
 
+            // Get the current date and time
+            DateTime currentDate = DateTime.Now;
+
             // Save the transaction data to the database
             try
             {
                 con.Open();
-                string insertQuery = "INSERT INTO [Transaction] (Total, Cash, DiscountPercent, DiscountAmount, [Change]) VALUES (@Total, @Cash, @DiscountPercent, @DiscountAmount, @Change)";
+                string insertQuery = "INSERT INTO [Transaction] (Total, Cash, DiscountPercent, DiscountAmount, [Change], Date) VALUES (@Total, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Date)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, con))
                 {
@@ -150,6 +153,7 @@ namespace InventoryApp
                     command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
                     command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
                     command.Parameters.AddWithValue("@Change", change);
+                    command.Parameters.AddWithValue("@Date", currentDate);
                     command.ExecuteNonQuery();
                 }
 
