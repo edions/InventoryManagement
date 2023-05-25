@@ -1,5 +1,8 @@
-﻿using System;
+﻿using InventoryApp.InventoryApp.dlg;
+using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace InventoryApp
@@ -7,6 +10,7 @@ namespace InventoryApp
     public partial class Checkout : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
+        private static readonly HashSet<string> generatedIds = new HashSet<string>();
         public Checkout(int totalPrice)
         {
             InitializeComponent();
@@ -17,6 +21,26 @@ namespace InventoryApp
 
             // Attach the SelectedIndexChanged event handler
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+        }
+
+        //GENERATE UNIQUE TRANSACTION ID
+        private string GenerateTransactionId()
+        {
+            string uniqueProductId;
+
+            do
+            {
+                // Generate a unique identifier using a timestamp and a random number
+                string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+                Random random = new Random();
+                int randomNumber = random.Next(1000, 9999);
+                uniqueProductId = timestamp + randomNumber.ToString();
+            }
+            while (generatedIds.Contains(uniqueProductId));
+
+            generatedIds.Add(uniqueProductId);
+
+            return uniqueProductId;
         }
 
         //COMBOBOX ITEM
@@ -106,14 +130,7 @@ namespace InventoryApp
             label8.Text = totalAfterDiscount.ToString();
         }
 
-
-        //INSERT STOCK BUTTON
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ProcessTransaction();
-            DialogResult = DialogResult.OK;
-        }
-
+        //SAVE AND PROCESS TRANSACTION TO DB
         private void ProcessTransaction()
         {
             int total = Convert.ToInt32(label3.Text);
@@ -140,14 +157,18 @@ namespace InventoryApp
             // Get the current date and time
             DateTime currentDate = DateTime.Now;
 
+            // Generate the ProductId
+            string transactionId = GenerateTransactionId();
+
             // Save the transaction data to the database
             try
             {
                 con.Open();
-                string insertQuery = "INSERT INTO [Transaction] (Total, Cash, DiscountPercent, DiscountAmount, [Change], Date) VALUES (@Total, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Date)";
+                string insertQuery = "INSERT INTO [Transaction] (TransactionId, Total, Cash, DiscountPercent, DiscountAmount, [Change], Date) VALUES (@TransactionId, @Total, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Date)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, con))
                 {
+                    command.Parameters.AddWithValue("@TransactionId", transactionId);
                     command.Parameters.AddWithValue("@Total", total);
                     command.Parameters.AddWithValue("@Cash", cash);
                     command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
@@ -169,6 +190,43 @@ namespace InventoryApp
             {
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
             }
+        }
+
+        //MOVE CART ITEM TO ANOTHER DATABASE
+        private void InsertTransactionItems()
+        {
+            con.Open();
+            // Get the next product ID
+            string nextTransactionId = GenerateTransactionId();
+
+            // Insert the data from the listBox1 into the TransactionItem table
+            string insertQuery = "INSERT INTO TransactionItem (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
+            using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
+            {
+                foreach (var item in listBox1.Items)
+                {
+                    string[] parts = item.ToString().Split(new string[] { " x ", " - $" }, StringSplitOptions.None);
+                    string name = parts[1];
+                    decimal price = decimal.Parse(parts[2]);
+                    int quantity = int.Parse(parts[0]);
+
+                    insertCommand.Parameters.Clear();
+                    insertCommand.Parameters.AddWithValue("@TransactionId", nextTransactionId);
+                    insertCommand.Parameters.AddWithValue("@Name", name);
+                    insertCommand.Parameters.AddWithValue("@Price", price);
+                    insertCommand.Parameters.AddWithValue("@Quantity", quantity);
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            con.Close();
+        }
+
+        //INSERT STOCK BUTTON
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InsertTransactionItems();
+            ProcessTransaction();
+            DialogResult = DialogResult.OK;
         }
 
         //CANCEL BUTTON
