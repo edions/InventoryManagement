@@ -28,5 +28,15 @@ namespace InventoryApp.InventoryApp.dlg
                 con.Close();
             }
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
+                TransactionItem dlg = new TransactionItem(id);
+                dlg.ShowDialog();
+            }
+        }
     }
 }

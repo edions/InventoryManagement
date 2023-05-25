@@ -76,6 +76,12 @@ namespace InventoryApp
             }
         }
 
+        //COMBOBOX EVENT
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateDiscount();
+        }
+
         //CALCULATE THE DISCOUNT
         private void CalculateDiscount()
         {
@@ -103,6 +109,12 @@ namespace InventoryApp
 
         //INSERT STOCK BUTTON
         private void button1_Click(object sender, EventArgs e)
+        {
+            ProcessTransaction();
+            DialogResult = DialogResult.OK;
+        }
+
+        private void ProcessTransaction()
         {
             int total = Convert.ToInt32(label3.Text);
             int cash = string.IsNullOrWhiteSpace(textBox2.Text) ? 0 : Convert.ToInt32(textBox2.Text);
@@ -153,18 +165,12 @@ namespace InventoryApp
             {
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
             }
-            DialogResult = DialogResult.OK;
         }
 
         //CANCEL BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CalculateDiscount();
         }
     }
 }
