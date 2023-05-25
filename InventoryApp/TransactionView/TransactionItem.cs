@@ -6,25 +6,25 @@ namespace InventoryApp.InventoryApp.dlg
 {
     public partial class TransactionItem : Form
     {
-        private readonly int productId;
-        public TransactionItem(int id)
+        //private readonly string transactionId;
+        public TransactionItem(string id)
         {
             InitializeComponent();
-            productId = id;
-            DisplayHistory();
+            //this.transactionId = transactionId;
+            DisplayTransactionItems(id);
 
         }
 
         //FETCH DATA FROM HISTORY TABLE
-        private void DisplayHistory()
+        private void DisplayTransactionItems(string transactionId)
         {
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT ProductID, [Added Stocks], [Date] FROM History WHERE ProductID = @id", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT TransactionId, Name, Price, Quantity FROM TransactionItem WHERE TransactionId = @id", con))
                 {
-                    cmd.Parameters.AddWithValue("@id", productId);
+                    cmd.Parameters.AddWithValue("@id", transactionId);
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

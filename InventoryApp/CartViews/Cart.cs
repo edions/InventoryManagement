@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using System;
-using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp.InventoryApp.Views
 {

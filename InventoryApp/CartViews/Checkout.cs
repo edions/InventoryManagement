@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace InventoryApp
@@ -10,6 +9,7 @@ namespace InventoryApp
     public partial class Checkout : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
+        private string transactionId;
         private static readonly HashSet<string> generatedIds = new HashSet<string>();
         public Checkout(int totalPrice)
         {
@@ -26,21 +26,17 @@ namespace InventoryApp
         //GENERATE UNIQUE TRANSACTION ID
         private string GenerateTransactionId()
         {
-            string uniqueProductId;
+            string uniqueTransactionId;
 
             do
             {
-                // Generate a unique identifier using a timestamp and a random number
-                string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-                Random random = new Random();
-                int randomNumber = random.Next(1000, 9999);
-                uniqueProductId = timestamp + randomNumber.ToString();
+                uniqueTransactionId = Guid.NewGuid().ToString();
             }
-            while (generatedIds.Contains(uniqueProductId));
+            while (generatedIds.Contains(uniqueTransactionId));
 
-            generatedIds.Add(uniqueProductId);
+            generatedIds.Add(uniqueTransactionId);
 
-            return uniqueProductId;
+            return uniqueTransactionId;
         }
 
         //COMBOBOX ITEM
@@ -158,7 +154,7 @@ namespace InventoryApp
             DateTime currentDate = DateTime.Now;
 
             // Generate the ProductId
-            string transactionId = GenerateTransactionId();
+            string transactionId = this.transactionId;
 
             // Save the transaction data to the database
             try
@@ -185,6 +181,7 @@ namespace InventoryApp
                     deleteCommand.ExecuteNonQuery();
                 }
                 con.Close();
+                DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -197,7 +194,7 @@ namespace InventoryApp
         {
             con.Open();
             // Get the next product ID
-            string nextTransactionId = GenerateTransactionId();
+            string nextTransactionId = this.transactionId;
 
             // Insert the data from the listBox1 into the TransactionItem table
             string insertQuery = "INSERT INTO TransactionItem (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
@@ -224,9 +221,9 @@ namespace InventoryApp
         //INSERT STOCK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
+            transactionId = GenerateTransactionId();
             InsertTransactionItems();
             ProcessTransaction();
-            DialogResult = DialogResult.OK;
         }
 
         //CANCEL BUTTON
