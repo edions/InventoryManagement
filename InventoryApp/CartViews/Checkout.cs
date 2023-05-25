@@ -12,6 +12,7 @@ namespace InventoryApp
             InitializeComponent();
             label3.Text = totalPrice.ToString();
             InitializeComboBox(comboBox1);
+            CalculateDiscount();
 
             // Attach the SelectedIndexChanged event handler
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
@@ -50,8 +51,14 @@ namespace InventoryApp
                 discountAmount = total * (discountPercent / 100);
             }
 
+            // Calculate the total value after discount
+            double totalAfterDiscount = total - discountAmount;
+
             // Display the discount amount in label7
-            label7.Text = (0 - discountAmount).ToString();
+            label7.Text = (0 - discountAmount).ToString(); // Add a negative sign to the discountAmount
+
+            // Display the total value after discount in label8
+            label8.Text = totalAfterDiscount.ToString();
         }
 
 

@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace InventoryApp
 {
-    public partial class AddQuantity : Form
+    public partial class Quantity : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
         readonly private int itemId;
-        public AddQuantity(int id, int quantity)
+        public Quantity(int id, int quantity)
         {
             InitializeComponent();
 

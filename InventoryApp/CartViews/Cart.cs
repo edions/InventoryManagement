@@ -79,7 +79,7 @@ namespace InventoryApp.InventoryApp.Views
                 int quantity = (int)row.Cells["Quantity"].Value;
 
                 // Pass the data to EditCat
-                AddQuantity dlg = new AddQuantity(id, quantity);
+                Quantity dlg = new Quantity(id, quantity);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     // Refresh DataGridView when "EditCategory Dialog" is closed
