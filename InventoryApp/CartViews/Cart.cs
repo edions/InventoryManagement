@@ -71,7 +71,7 @@ namespace InventoryApp.InventoryApp.Views
         //ADD QUANTITY BYTTON - Cart
         private void button4_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView1.Rows.Count > 0 && dataGridView1.SelectedRows.Count > 0)
             {
                 // Get the data from the selected row
                 DataGridViewRow row = dataGridView1.SelectedRows[0];
@@ -85,6 +85,11 @@ namespace InventoryApp.InventoryApp.Views
                     // Refresh DataGridView when "EditCategory Dialog" is closed
                     DisplayCartItem();
                 }
+            }
+            else
+            {
+                // Cart table is empty, handle the scenario here
+                MessageBox.Show("Cart is empty.", "Empty Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
