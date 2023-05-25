@@ -1,4 +1,5 @@
-﻿using InventoryApp.InventoryApp.Views;
+﻿using InventoryApp.InventoryApp.dlg;
+using InventoryApp.InventoryApp.Views;
 using System;
 using System.Windows.Forms;
 
@@ -57,6 +58,14 @@ namespace InventoryApp.InventoryApp
             if (radioButton3.Checked)
             {
                 SwitchForm(new Cart());
+            }
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                SwitchForm(new Transaction());
             }
         }
     }

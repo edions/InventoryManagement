@@ -118,12 +118,5 @@ namespace InventoryApp.InventoryApp.Views
                 MessageBox.Show("Cart is empty.", "Empty Cart", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        //TRANSACTION BUTTON - Cart
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Transaction dlg = new Transaction();
-            dlg.ShowDialog();
-        }
     }
 }

@@ -13,11 +13,13 @@ namespace InventoryApp
             label3.Text = totalPrice.ToString();
             InitializeComboBox(comboBox1);
             CalculateDiscount();
+            LoadCartItems();
 
             // Attach the SelectedIndexChanged event handler
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
         }
 
+        //COMBOBOX ITEM
         public static void InitializeComboBox(ComboBox comboBox)
         {
             comboBox.Items.Add(new ComboBoxItem { Value = 10, Description = "10% off" });
@@ -27,6 +29,7 @@ namespace InventoryApp
 
         }
 
+        //COMBOBOX GETTER AND SETTER
         public class ComboBoxItem
         {
             public double Value { get; set; }
@@ -38,6 +41,42 @@ namespace InventoryApp
             }
         }
 
+        //LOAD_ITEM_FROM TO LISTBOX
+        private void LoadCartItems()
+        {
+            try
+            {
+                con.Open();
+
+                string selectQuery = "SELECT Name, Price, Quantity FROM Cart";
+
+                using (SqlCommand command = new SqlCommand(selectQuery, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        listBox1.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            string name = reader["Name"].ToString();
+                            int price = Convert.ToInt32(reader["Price"]);
+                            int quantity = Convert.ToInt32(reader["Quantity"]);
+
+                            string item = $"{quantity} x {name} - ${price}";
+                            listBox1.Items.Add(item);
+                        }
+                    }
+                }
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading cart items: " + ex.Message);
+            }
+        }
+
+        //CALCULATE THE DISCOUNT
         private void CalculateDiscount()
         {
             int total = Convert.ToInt32(label3.Text);
@@ -55,7 +94,7 @@ namespace InventoryApp
             double totalAfterDiscount = total - discountAmount;
 
             // Display the discount amount in label7
-            label7.Text = (0 - discountAmount).ToString(); // Add a negative sign to the discountAmount
+            label7.Text = (0 - discountAmount).ToString();
 
             // Display the total value after discount in label8
             label8.Text = totalAfterDiscount.ToString();
