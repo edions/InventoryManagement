@@ -12,6 +12,9 @@ namespace InventoryApp
             InitializeComponent();
             label3.Text = totalPrice.ToString();
             InitializeComboBox(comboBox1);
+
+            // Attach the SelectedIndexChanged event handler
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
         }
 
         public static void InitializeComboBox(ComboBox comboBox)
@@ -32,6 +35,23 @@ namespace InventoryApp
             {
                 return Description;
             }
+        }
+
+        private void CalculateDiscount()
+        {
+            int total = Convert.ToInt32(label3.Text);
+            double discountAmount = 0;
+
+            if (comboBox1.SelectedItem is ComboBoxItem selectedItem)
+            {
+                double discountPercent = selectedItem.Value;
+
+                // Calculate the discount amount
+                discountAmount = total * (discountPercent / 100);
+            }
+
+            // Display the discount amount in label7
+            label7.Text = (0 - discountAmount).ToString();
         }
 
 
@@ -94,6 +114,11 @@ namespace InventoryApp
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateDiscount();
         }
     }
 }
