@@ -60,7 +60,7 @@ namespace InventoryApp.InventoryApp.Views
             }
             else
             {
-                MessageBox.Show("No category is available for editing.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No category is available for editing.", "Empty Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -91,7 +91,7 @@ namespace InventoryApp.InventoryApp.Views
             }
             else
             {
-                MessageBox.Show("Please select a category to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a category to delete.", "Empty Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

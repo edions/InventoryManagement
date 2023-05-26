@@ -108,7 +108,7 @@ namespace InventoryApp
             }
             else
             {
-                MessageBox.Show("No product is available for editing.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No product is available for editing.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -139,7 +139,7 @@ namespace InventoryApp
             }
             else
             {
-                MessageBox.Show("Please select a product to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to delete.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -157,7 +157,7 @@ namespace InventoryApp
             }
             else
             {
-                MessageBox.Show("No products are available for adding stock.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No products are available for adding stock.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -172,7 +172,7 @@ namespace InventoryApp
             }
             else
             {
-                MessageBox.Show("No product history is available.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No product history is available.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
