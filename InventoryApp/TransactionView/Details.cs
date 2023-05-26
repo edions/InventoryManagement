@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace InventoryApp.InventoryApp.dlg
 {
-    public partial class TransactionItem : Form
+    public partial class Details : Form
     {
         //private readonly string transactionId;
-        public TransactionItem(string id)
+        public Details(string id)
         {
             InitializeComponent();
             //this.transactionId = transactionId;

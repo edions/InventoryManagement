@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp.InventoryApp.dlg
 {
-    partial class TransactionItem
+    partial class Details
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.groupBox1.Size = new System.Drawing.Size(593, 369);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Stock History";
+            this.groupBox1.Text = "ProductList";
             // 
             // dataGridView1
             // 
@@ -59,7 +59,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(573, 337);
             this.dataGridView1.TabIndex = 2;
             // 
-            // History
+            // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,10 +68,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "History";
+            this.Name = "Details";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "History";
+            this.Text = "Details";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

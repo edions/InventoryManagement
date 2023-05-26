@@ -79,11 +79,11 @@
     <Compile Include="InventoryApp\CartViews\Quantity.Designer.cs">
       <DependentUpon>Quantity.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\TransactionView\TransactionItem.cs">
+    <Compile Include="InventoryApp\TransactionView\Details.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\TransactionView\TransactionItem.Designer.cs">
-      <DependentUpon>TransactionItem.cs</DependentUpon>
+    <Compile Include="InventoryApp\TransactionView\Details.Designer.cs">
+      <DependentUpon>Details.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryApp\TransactionView\Transaction.cs">
       <SubType>Form</SubType>
@@ -157,8 +157,8 @@
     <EmbeddedResource Include="InventoryApp\CartViews\Quantity.resx">
       <DependentUpon>Quantity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\TransactionView\TransactionItem.resx">
-      <DependentUpon>TransactionItem.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryApp\TransactionView\Details.resx">
+      <DependentUpon>Details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryApp\TransactionView\Transaction.resx">
       <DependentUpon>Transaction.cs</DependentUpon>

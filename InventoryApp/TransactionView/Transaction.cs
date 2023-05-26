@@ -34,7 +34,7 @@ namespace InventoryApp.InventoryApp.dlg
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string id = (string)dataGridView1.SelectedRows[0].Cells["TransactionId"].Value;
-                TransactionItem dlg = new TransactionItem(id);
+                Details dlg = new Details(id);
                 dlg.ShowDialog();
             }
         }

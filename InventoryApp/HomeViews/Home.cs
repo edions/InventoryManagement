@@ -106,6 +106,10 @@ namespace InventoryApp
                     DisplayData();
                 }
             }
+            else
+            {
+                MessageBox.Show("No product is available for editing.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         //DELETE BUTTON - Home
@@ -135,7 +139,7 @@ namespace InventoryApp
             }
             else
             {
-                MessageBox.Show("Please select a row to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to delete.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -151,6 +155,10 @@ namespace InventoryApp
                     DisplayData();
                 }
             }
+            else
+            {
+                MessageBox.Show("No products are available for adding stock.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         //HISTORY BUTTON - Home
@@ -161,6 +169,10 @@ namespace InventoryApp
                 int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
                 History historyForm = new History(id);
                 historyForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No product history is available.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
