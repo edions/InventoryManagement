@@ -61,6 +61,7 @@ namespace InventoryApp.InventoryApp
             }
         }
 
+        //TRANSACTION TAB
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton4.Checked)

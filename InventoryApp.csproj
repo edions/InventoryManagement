@@ -61,133 +61,133 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InventoryApp\CartViews\Cart.cs">
+    <Compile Include="Views\CartViews\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\CartViews\Cart.Designer.cs">
+    <Compile Include="Views\CartViews\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\CartViews\Checkout.cs">
+    <Compile Include="Views\CartViews\Checkout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\CartViews\Checkout.Designer.cs">
+    <Compile Include="Views\CartViews\Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\CartViews\Quantity.cs">
+    <Compile Include="Views\CartViews\Quantity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\CartViews\Quantity.Designer.cs">
+    <Compile Include="Views\CartViews\Quantity.Designer.cs">
       <DependentUpon>Quantity.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\TransactionView\Details.cs">
+    <Compile Include="Views\TransactionView\Details.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\TransactionView\Details.Designer.cs">
+    <Compile Include="Views\TransactionView\Details.Designer.cs">
       <DependentUpon>Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\TransactionView\Transaction.cs">
+    <Compile Include="Views\TransactionView\Transaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\TransactionView\Transaction.Designer.cs">
+    <Compile Include="Views\TransactionView\Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\CategoryViews\EditCat.cs">
+    <Compile Include="Views\CategoryViews\EditCat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\CategoryViews\EditCat.Designer.cs">
+    <Compile Include="Views\CategoryViews\EditCat.Designer.cs">
       <DependentUpon>EditCat.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\CategoryViews\CreateCat.cs">
+    <Compile Include="Views\CategoryViews\CreateCat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\CategoryViews\CreateCat.Designer.cs">
+    <Compile Include="Views\CategoryViews\CreateCat.Designer.cs">
       <DependentUpon>CreateCat.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\ConnectionManager.cs" />
-    <Compile Include="InventoryApp\MainView.cs">
+    <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\MainView.Designer.cs">
+    <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\CategoryViews\Category.cs">
+    <Compile Include="Views\CategoryViews\Category.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\CategoryViews\Category.Designer.cs">
+    <Compile Include="Views\CategoryViews\Category.Designer.cs">
       <DependentUpon>Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\AddStock.cs">
+    <Compile Include="Views\HomeViews\AddStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\AddStock.Designer.cs">
+    <Compile Include="Views\HomeViews\AddStock.Designer.cs">
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\History.cs">
+    <Compile Include="Views\HomeViews\History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\History.Designer.cs">
+    <Compile Include="Views\HomeViews\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\Home.cs">
+    <Compile Include="Views\HomeViews\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\Home.Designer.cs">
+    <Compile Include="Views\HomeViews\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\EditProd.cs">
+    <Compile Include="Views\HomeViews\EditProd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\EditProd.Designer.cs">
+    <Compile Include="Views\HomeViews\EditProd.Designer.cs">
       <DependentUpon>EditProd.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\CreateProd.cs">
+    <Compile Include="Views\HomeViews\CreateProd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryApp\HomeViews\CreateProd.Designer.cs">
+    <Compile Include="Views\HomeViews\CreateProd.Designer.cs">
       <DependentUpon>CreateProd.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="InventoryApp\CartViews\Cart.resx">
+    <EmbeddedResource Include="Views\CartViews\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\CartViews\Checkout.resx">
+    <EmbeddedResource Include="Views\CartViews\Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\CartViews\Quantity.resx">
+    <EmbeddedResource Include="Views\CartViews\Quantity.resx">
       <DependentUpon>Quantity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\TransactionView\Details.resx">
+    <EmbeddedResource Include="Views\TransactionView\Details.resx">
       <DependentUpon>Details.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\TransactionView\Transaction.resx">
+    <EmbeddedResource Include="Views\TransactionView\Transaction.resx">
       <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\CategoryViews\EditCat.resx">
+    <EmbeddedResource Include="Views\CategoryViews\EditCat.resx">
       <DependentUpon>EditCat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\CategoryViews\CreateCat.resx">
+    <EmbeddedResource Include="Views\CategoryViews\CreateCat.resx">
       <DependentUpon>CreateCat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\MainView.resx">
+    <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\CategoryViews\Category.resx">
+    <EmbeddedResource Include="Views\CategoryViews\Category.resx">
       <DependentUpon>Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\HomeViews\AddStock.resx">
+    <EmbeddedResource Include="Views\HomeViews\AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\HomeViews\History.resx">
+    <EmbeddedResource Include="Views\HomeViews\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\HomeViews\Home.resx">
+    <EmbeddedResource Include="Views\HomeViews\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\HomeViews\EditProd.resx">
+    <EmbeddedResource Include="Views\HomeViews\EditProd.resx">
       <DependentUpon>EditProd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryApp\HomeViews\CreateProd.resx">
+    <EmbeddedResource Include="Views\HomeViews\CreateProd.resx">
       <DependentUpon>CreateProd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

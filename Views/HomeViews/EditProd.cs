@@ -51,7 +51,7 @@ namespace InventoryApp
             {
                 SqlCommand command = new SqlCommand("INSERT INTO Category (CategoryItem) VALUES (@categoryitem)", con);
                 command.Parameters.AddWithValue("@categoryitem", selectedItem);
-                int rowsAffected = command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
             }
             con.Close();
             DialogResult = DialogResult.OK;
