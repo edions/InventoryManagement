@@ -9,11 +9,11 @@ namespace InventoryApp.InventoryApp.dlg
         public Transaction()
         {
             InitializeComponent();
-            DisplayHTransaction();
+            DisplayTransaction();
         }
 
-        //FETCH DATA FROM TABLE
-        private void DisplayHTransaction()
+        //FETCH DATA FROM TRANSACTION TABLE
+        private void DisplayTransaction()
         {
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
@@ -29,6 +29,7 @@ namespace InventoryApp.InventoryApp.dlg
             }
         }
 
+        //CELL DOUBLE CLICK EVENT FOR OPENING DETAILS
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)

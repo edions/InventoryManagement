@@ -6,23 +6,21 @@ namespace InventoryApp.InventoryApp.dlg
 {
     public partial class Details : Form
     {
-        //private readonly string transactionId;
         public Details(string id)
         {
             InitializeComponent();
-            //this.transactionId = transactionId;
             DisplayTransactionItems(id);
 
         }
 
-        //FETCH DATA FROM HISTORY TABLE
+        //FETCH DATA FROM ORDERS TABLE
         private void DisplayTransactionItems(string transactionId)
         {
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT TransactionId, Name, Price, Quantity FROM TransactionItem WHERE TransactionId = @id", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT Id, Name, Price, Quantity FROM Orders WHERE TransactionId = @id", con))
                 {
                     cmd.Parameters.AddWithValue("@id", transactionId);
 

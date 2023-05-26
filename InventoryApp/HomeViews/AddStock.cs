@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace InventoryApp
 {
-    public partial class InsertStock : Form
+    public partial class AddStock : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
         readonly private string itemName;
-        public InsertStock(string name)
+        public AddStock(string name)
         {
             InitializeComponent();
             itemName = name;

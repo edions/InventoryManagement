@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp
 {
-    partial class InsertCat
+    partial class CreateCat
     {
         /// <summary>
         /// Required designer variable.

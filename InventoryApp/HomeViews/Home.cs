@@ -76,7 +76,7 @@ namespace InventoryApp
         //INSERT BUTTON - Home
         private void button1_Click(object sender, EventArgs e)
         {
-            Insert dlg = new Insert();
+            CreateProd dlg = new CreateProd();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //Refresh DataGridView when "Insert Dailog" is close
@@ -99,7 +99,7 @@ namespace InventoryApp
                 string category = row.Cells["category"].Value.ToString();
 
                 // Pass the data to EditDailog
-                Edit dlg = new Edit(id, name, price, stock, unit, category);
+                EditProd dlg = new EditProd(id, name, price, stock, unit, category);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     //Refresh DataGridView when "Edit Dailog" is close
@@ -149,7 +149,7 @@ namespace InventoryApp
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string name = dataGridView1.SelectedRows[0].Cells["name"].Value.ToString();
-                InsertStock dlg = new InsertStock(name);
+                AddStock dlg = new AddStock(name);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     DisplayData();

@@ -1,5 +1,4 @@
-﻿using InventoryApp.InventoryApp.dlg;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -111,18 +110,11 @@ namespace InventoryApp
             if (comboBox1.SelectedItem is ComboBoxItem selectedItem)
             {
                 double discountPercent = selectedItem.Value;
-
-                // Calculate the discount amount
                 discountAmount = total * (discountPercent / 100);
             }
 
-            // Calculate the total value after discount
             double totalAfterDiscount = total - discountAmount;
-
-            // Display the discount amount in label7
             label7.Text = (0 - discountAmount).ToString();
-
-            // Display the total value after discount in label8
             label8.Text = totalAfterDiscount.ToString();
         }
 
@@ -147,13 +139,8 @@ namespace InventoryApp
                 return;
             }
 
-            // Calculate the change
             double change = cash - (total - discountAmount);
-
-            // Get the current date and time
             DateTime currentDate = DateTime.Now;
-
-            // Generate the ProductId
             string transactionId = this.transactionId;
 
             // Save the transaction data to the database
@@ -174,7 +161,7 @@ namespace InventoryApp
                     command.ExecuteNonQuery();
                 }
 
-                // Delete the data from the Cart table
+                // Delete the data from the Cart table after successful transaction
                 string deleteQuery = "DELETE FROM [Cart]";
                 using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, con))
                 {
@@ -197,7 +184,7 @@ namespace InventoryApp
             string nextTransactionId = this.transactionId;
 
             // Insert the data from the listBox1 into the TransactionItem table
-            string insertQuery = "INSERT INTO TransactionItem (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
+            string insertQuery = "INSERT INTO Orders (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
             using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
             {
                 foreach (var item in listBox1.Items)

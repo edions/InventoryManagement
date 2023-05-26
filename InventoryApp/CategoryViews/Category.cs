@@ -32,7 +32,7 @@ namespace InventoryApp.InventoryApp.Views
         //Category
         private void button1_Click(object sender, System.EventArgs e)
         {
-            InsertCat dlg = new InsertCat();
+            CreateCat dlg = new CreateCat();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //Refresh DataGridView when "InsertCat" is close
