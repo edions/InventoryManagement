@@ -6,7 +6,8 @@ namespace InventoryApp.InventoryApp
 {
     public partial class MainView : Form
     {
-        private readonly Home homeForm; // Add a private field to store the instance of the "Home" form
+        private Form currentForm;
+
         private bool sidebarExpanded = true;
         private const int MinSidebarWidth = 59;
         private const int MaxSidebarWidth = 200;
@@ -14,86 +15,44 @@ namespace InventoryApp.InventoryApp
         public MainView()
         {
             InitializeComponent();
-
-            homeForm = new Home
-            {
-                // Set up the mainForm
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
-            }; // Instantiate the "Main" form
-
-            // Add the mainForm to the panel
-            panel2.Controls.Add(homeForm);
-            homeForm.Show();
+            SwitchForm(new Home());
         }
 
         //NAVIGATION CONTROL
-        private void AddForm(Form form)
+        private void SwitchForm(Form newForm)
         {
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-
+            currentForm?.Hide();
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+            newForm.Dock = DockStyle.Fill;
             // Check if panel2 already contains a form
             if (panel2.Controls.Count > 0)
             {
-                // Hide the current form instead of clearing the panel
-                Control currentForm = panel2.Controls[0];
-                currentForm.Hide();
-                panel1.Controls.Remove(currentForm);
+                Control currentFormControl = panel2.Controls[0];
+                currentFormControl.Hide();
+                panel2.Controls.Remove(currentFormControl);
             }
+            panel2.Controls.Add(newForm);
+            newForm.Show();
 
-            panel2.Controls.Add(form);
-            form.Show();
+            currentForm = newForm;
         }
 
         //HOME TAB
-        private void button1_Click(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            // Show the Main form if it exists in the panel
-            if (panel2.Controls.Count > 0 && panel2.Controls[0] is Home)
+            if (radioButton1.Checked)
             {
-                panel2.Controls[0].Show();
-            }
-            else
-            {
-                AddForm(new Home());
+                SwitchForm(new Home());
             }
         }
 
         //CATEGORY TAB
-        private void button2_Click(object sender, EventArgs e)
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            Category categoryView = null;
-
-            foreach (Form form in Application.OpenForms)
+            if (radioButton2.Checked)
             {
-                if (form is Category category)
-                {
-                    categoryView = category;
-                    break;
-                }
-            }
-
-            if (categoryView == null)
-            {
-                categoryView = new Category();
-                AddForm(categoryView);
-            }
-            else
-            {
-                // Check if the Category form is hidden
-                if (categoryView.Visible == false)
-                {
-                    categoryView.Show();
-                }
-                // Check if the Category form is not the currently displayed form
-                else if (panel2.Controls.Count > 0 && panel2.Controls[0] != categoryView)
-                {
-                    panel2.Controls[0].Hide();
-                    categoryView.Show();
-                }
+                SwitchForm(new Category());
             }
         }
 
