@@ -13,6 +13,7 @@ namespace InventoryApp
         {
             InitializeComponent();
             DisplayData();
+            AddToCart();
         }
 
         //FETCH DATA FROM PRODUCT DATABASE
@@ -72,11 +73,10 @@ namespace InventoryApp
             }
         }
 
-        //INSERT BUTTON
-        //Home
+        //INSERT BUTTON - Home
         private void button1_Click(object sender, EventArgs e)
         {
-            Insert dlg = new Insert();
+            CreateProd dlg = new CreateProd();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 //Refresh DataGridView when "Insert Dailog" is close
@@ -84,8 +84,7 @@ namespace InventoryApp
             }
         }
 
-        //UPDATE BUTTON
-        //Home
+        //UPDATE BUTTON - Home
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -100,17 +99,20 @@ namespace InventoryApp
                 string category = row.Cells["category"].Value.ToString();
 
                 // Pass the data to EditDailog
-                Edit dlg = new Edit(id, name, price, stock, unit, category);
+                EditProd dlg = new EditProd(id, name, price, stock, unit, category);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     //Refresh DataGridView when "Edit Dailog" is close
                     DisplayData();
                 }
             }
+            else
+            {
+                MessageBox.Show("No product is available for editing.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        //DELETE BUTTON
-        //Home
+        //DELETE BUTTON - Home
         private void button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -137,27 +139,29 @@ namespace InventoryApp
             }
             else
             {
-                MessageBox.Show("Please select a row to remove.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product to remove.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        //ADD STOCKS BUTTON
-        //Home
+        //ADD STOCKS BUTTON - Home
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string name = dataGridView1.SelectedRows[0].Cells["name"].Value.ToString();
-                InsertStock dlg = new InsertStock(name);
+                AddStock dlg = new AddStock(name);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     DisplayData();
                 }
             }
+            else
+            {
+                MessageBox.Show("No products are available for adding stock.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        //HISTORY BUTTON
-        //Home
+        //HISTORY BUTTON - Home
         private void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -165,6 +169,87 @@ namespace InventoryApp
                 int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
                 History historyForm = new History(id);
                 historyForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No product history is available.", "Empty!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //ADD_TO_CART DATAGRID BUTTON - Home
+        private void AddToCart()
+        {
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn
+            {
+                Text = "Add to Cart",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridView1.Columns.Add(buttonColumn);
+            dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+        }
+
+        //DATAGRIDVIEW BUTTON EVENT - Home
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                // Get the values from the selected row
+                string name = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Price"].Value);
+
+                // Check if the item already exists in the cart
+                using (SqlConnection con = ConnectionManager.GetConnection())
+                {
+                    con.Open();
+                    string selectQuery = "SELECT Quantity, Price FROM Cart WHERE Name = @Name";
+
+                    using (SqlCommand selectCommand = new SqlCommand(selectQuery, con))
+                    {
+                        selectCommand.Parameters.AddWithValue("@Name", name);
+                        SqlDataReader reader = selectCommand.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            // Item already exists in the cart, update the quantity and price
+                            int existingQuantity = Convert.ToInt32(reader["Quantity"]);
+                            int existingPrice = Convert.ToInt32(reader["Price"]);
+                            int newQuantity = existingQuantity + 1;
+                            int newPrice = existingPrice;
+
+                            reader.Close();
+
+                            string updateQuery = "UPDATE Cart SET Quantity = @Quantity, Price = @Price WHERE Name = @Name";
+
+                            using (SqlCommand updateCommand = new SqlCommand(updateQuery, con))
+                            {
+                                updateCommand.Parameters.AddWithValue("@Quantity", newQuantity);
+                                updateCommand.Parameters.AddWithValue("@Price", newPrice);
+                                updateCommand.Parameters.AddWithValue("@Name", name);
+                                updateCommand.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            reader.Close();
+
+                            // Item does not exist in the cart, insert a new row
+                            string insertQuery = "INSERT INTO Cart (Name, Price, Quantity) VALUES (@Name, @Price, 1)";
+
+                            using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
+                            {
+                                insertCommand.Parameters.AddWithValue("@Name", name);
+                                insertCommand.Parameters.AddWithValue("@Price", price);
+                                insertCommand.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    con.Close();
+                }
+
+                // Provide feedback when item successfully added to cart
+                MessageBox.Show("Product added to cart.");
             }
         }
     }

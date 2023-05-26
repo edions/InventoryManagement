@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace InventoryApp
 {
-    public partial class InsertCat : Form
+    public partial class CreateCat : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
-        public InsertCat()
+        public CreateCat()
         {
             InitializeComponent();
         }

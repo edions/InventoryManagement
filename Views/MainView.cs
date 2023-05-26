@@ -1,4 +1,5 @@
-﻿using InventoryApp.InventoryApp.Views;
+﻿using InventoryApp.InventoryApp.dlg;
+using InventoryApp.InventoryApp.Views;
 using System;
 using System.Windows.Forms;
 
@@ -56,6 +57,24 @@ namespace InventoryApp.InventoryApp
             }
         }
 
+        //CART TAB
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                SwitchForm(new Cart());
+            }
+        }
+
+        //
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                SwitchForm(new Transaction());
+            }
+        }
+
         //SIDEBAR CONTROL
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -87,12 +106,12 @@ namespace InventoryApp.InventoryApp
                 panel2.ResumeLayout();
 
                 // Enable the button when the animation is complete
-                button4.Enabled = true;
+                button1.Enabled = true;
             }
         }
 
         //HAMBURGER BUTTON
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (timer1.Enabled)
             {
@@ -101,7 +120,7 @@ namespace InventoryApp.InventoryApp
             }
 
             // Disable the button during the animation
-            button4.Enabled = false;
+            button1.Enabled = false;
 
             panel2.SuspendLayout();
             panel1.SuspendLayout();

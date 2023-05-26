@@ -32,16 +32,15 @@ namespace InventoryApp.InventoryApp.Views
         //Category
         private void button1_Click(object sender, System.EventArgs e)
         {
-            InsertCat dlg = new InsertCat();
+            CreateCat dlg = new CreateCat();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                //Refresh DataGridView when "Insert Dailog" is close
+                //Refresh DataGridView when "InsertCat" is close
                 CategoryDisplay();
             }
         }
 
-        //UPDATE BUTTON
-        //Category
+        //UPDATE BUTTON - Category
         private void button2_Click(object sender, System.EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -51,7 +50,7 @@ namespace InventoryApp.InventoryApp.Views
                 int id = (int)row.Cells["Id"].Value;
                 string categoryItem = row.Cells["CategoryItem"].Value.ToString();
 
-                // Pass the data to EditDialog
+                // Pass the data to EditCat
                 EditCat dlg = new EditCat(id, categoryItem);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -59,11 +58,13 @@ namespace InventoryApp.InventoryApp.Views
                     CategoryDisplay();
                 }
             }
-
+            else
+            {
+                MessageBox.Show("No category is available for editing.", "Empty Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        //DELETE BUTTON
-        //Category
+        //DELETE BUTTON - Category
         private void button3_Click(object sender, System.EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -90,7 +91,7 @@ namespace InventoryApp.InventoryApp.Views
             }
             else
             {
-                MessageBox.Show("Please select a row to remove.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a category to remove.", "Empty Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
