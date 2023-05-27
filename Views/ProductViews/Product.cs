@@ -54,7 +54,7 @@ namespace InventoryApp
         //INSERT BUTTON - Home
         private void button1_Click(object sender, EventArgs e)
         {
-            CreateProd dlg = new CreateProd(productManager);
+            ProductDialog dlg = new ProductDialog(productManager);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 dataGridView1.DataSource = productManager.GetProducts();
@@ -76,7 +76,7 @@ namespace InventoryApp
                 string category = row.Cells["category"].Value.ToString();
 
                 // Pass the data to EditDialog
-                EditProd dlg = new EditProd(productManager, id, name, price, stock, unit, category);
+                ProductDialog dlg = new ProductDialog(productManager, id, name, price, stock, unit, category);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1.DataSource = productManager.GetProducts();

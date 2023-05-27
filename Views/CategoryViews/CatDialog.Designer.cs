@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp
 {
-    partial class CreateCat
+    partial class CatDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -58,7 +58,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 41);
             this.button1.TabIndex = 10;
-            this.button1.Text = "ADD";
+            this.button1.Text = "SAVE";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -82,7 +82,7 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
-            // InsertCat
+            // CatDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,9 +92,10 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "InsertCat";
+            this.Name = "CatDialog";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add Category";
+            this.Text = "CatDialog";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

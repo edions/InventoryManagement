@@ -18,7 +18,7 @@ namespace InventoryApp.InventoryApp.Views
         //ADD BUTTON - Category
         private void button1_Click(object sender, System.EventArgs e)
         {
-            CreateCat dlg = new CreateCat(categoryManager);
+            CatDialog dlg = new CatDialog(categoryManager);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 dataGridView1.DataSource = categoryManager.GetCategories();
@@ -36,7 +36,7 @@ namespace InventoryApp.InventoryApp.Views
                 string categoryItem = row.Cells["CategoryItem"].Value.ToString();
 
                 // Pass the data to EditCat
-                EditCat dlg = new EditCat(categoryManager, id, categoryItem);
+                CatDialog dlg = new CatDialog(categoryManager, id, categoryItem);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1.DataSource = categoryManager.GetCategories();

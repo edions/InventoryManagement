@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp
 {
-    partial class EditProd
+    partial class ProductDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -130,7 +130,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 41);
             this.button1.TabIndex = 10;
-            this.button1.Text = "UPDATE";
+            this.button1.Text = "SAVE";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -152,7 +152,7 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
-            // Edit
+            // ProductDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,9 +172,10 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "Edit";
+            this.Name = "ProductDialog";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Edit Product";
+            this.Text = "ProductDialog";
             this.ResumeLayout(false);
             this.PerformLayout();
 

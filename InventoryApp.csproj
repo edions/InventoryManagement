@@ -65,7 +65,7 @@
     <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\ProductManager.cs" />
     <Compile Include="Managers\StockManager.cs" />
-    <Compile Include="Services\PointOfSale.cs" />
+    <Compile Include="Module\PointOfSale.cs" />
     <Compile Include="Views\CartViews\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,17 +96,11 @@
     <Compile Include="Views\TransactionView\Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryViews\EditCat.cs">
+    <Compile Include="Views\CategoryViews\CatDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CategoryViews\EditCat.Designer.cs">
-      <DependentUpon>EditCat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CategoryViews\CreateCat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\CategoryViews\CreateCat.Designer.cs">
-      <DependentUpon>CreateCat.cs</DependentUpon>
+    <Compile Include="Views\CategoryViews\CatDialog.Designer.cs">
+      <DependentUpon>CatDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Managers\ConnectionManager.cs" />
     <Compile Include="Views\MainView.cs">
@@ -139,17 +133,11 @@
     <Compile Include="Views\ProductViews\Product.Designer.cs">
       <DependentUpon>Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductViews\EditProd.cs">
+    <Compile Include="Views\ProductViews\ProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ProductViews\EditProd.Designer.cs">
-      <DependentUpon>EditProd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProductViews\CreateProd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ProductViews\CreateProd.Designer.cs">
-      <DependentUpon>CreateProd.cs</DependentUpon>
+    <Compile Include="Views\ProductViews\ProductDialog.Designer.cs">
+      <DependentUpon>ProductDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,11 +156,8 @@
     <EmbeddedResource Include="Views\TransactionView\Transaction.resx">
       <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CategoryViews\EditCat.resx">
-      <DependentUpon>EditCat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CategoryViews\CreateCat.resx">
-      <DependentUpon>CreateCat.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CategoryViews\CatDialog.resx">
+      <DependentUpon>CatDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -189,11 +174,8 @@
     <EmbeddedResource Include="Views\ProductViews\Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProductViews\EditProd.resx">
-      <DependentUpon>EditProd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProductViews\CreateProd.resx">
-      <DependentUpon>CreateProd.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ProductViews\ProductDialog.resx">
+      <DependentUpon>ProductDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
