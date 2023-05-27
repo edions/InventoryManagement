@@ -1,40 +1,30 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+﻿using InventoryApp.Entity;
+using System;
 using System.Windows.Forms;
 
 namespace InventoryApp
 {
     public partial class EditCat : Form
     {
-        readonly SqlConnection con = ConnectionManager.GetConnection();
-        readonly private int itemId;
-        public EditCat(int id, string categoryitem)
+        private readonly CategoryManager categoryManager;
+        private readonly int itemId;
+        public EditCat(CategoryManager manager, int id, string categoryItem)
         {
             InitializeComponent();
-
+            categoryManager = manager;
             itemId = id;
-            textBox2.Text= categoryitem.ToString();
+            textBox2.Text = categoryItem;
         }
 
-        //UPDATE BUTTON
-        //Cat
+        //UPDATE BUTTON - Cat
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "UPDATE Category SET CategoryItem = @categoryItem WHERE Id = @id";
-            cmd.Parameters.AddWithValue("@categoryItem", textBox2.Text);
-            cmd.Parameters.AddWithValue("@id", itemId);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            categoryManager.UpdateCategory(itemId, textBox2.Text);
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        //CANCEL BUTTON
-        //Cat
+        //CANCEL BUTTON - Cat
         private void button2_Click(object sender, EventArgs e)
         {
             Close();

@@ -1,35 +1,28 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+﻿using InventoryApp.Entity;
+using System;
 using System.Windows.Forms;
 
 namespace InventoryApp
 {
     public partial class CreateCat : Form
     {
-        readonly SqlConnection con = ConnectionManager.GetConnection();
-        public CreateCat()
+        private readonly CategoryManager categoryManager;
+
+        public CreateCat(CategoryManager manager)
         {
             InitializeComponent();
+            categoryManager = manager;
         }
 
-        //INSERT BUTTON
-        //Cat
+        //INSERT BUTTON - Cat
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO Category (CategoryItem) VALUES (@categoryItem)";
-            cmd.Parameters.AddWithValue("@categoryItem", textBox2.Text);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            categoryManager.AddCategory(textBox2.Text);
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        //CANCEL BUTTON
-        //Cat
+        //CANCEL BUTTON - Cat
         private void button2_Click(object sender, EventArgs e)
         {
             Close();

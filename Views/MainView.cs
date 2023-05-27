@@ -11,7 +11,7 @@ namespace InventoryApp.InventoryApp
         public MainView()
         {
             InitializeComponent();
-            SwitchForm(new Home());
+            SwitchForm(new Product());
         }
 
         //NAVIGATION CONTROL
@@ -39,7 +39,7 @@ namespace InventoryApp.InventoryApp
         {
             if (radioButton1.Checked)
             {
-                SwitchForm(new Home());
+                SwitchForm(new Product());
             }
         }
 
