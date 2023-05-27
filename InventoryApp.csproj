@@ -61,10 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\CartManager.cs" />
-    <Compile Include="Entity\CategoryManager.cs" />
-    <Compile Include="Entity\ProductManager.cs" />
-    <Compile Include="Entity\StockManager.cs" />
+    <Compile Include="Managers\CartManager.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
+    <Compile Include="Managers\ProductManager.cs" />
+    <Compile Include="Managers\StockManager.cs" />
     <Compile Include="Services\PointOfSale.cs" />
     <Compile Include="Views\CartViews\Cart.cs">
       <SubType>Form</SubType>
@@ -108,7 +108,7 @@
     <Compile Include="Views\CategoryViews\CreateCat.Designer.cs">
       <DependentUpon>CreateCat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entity\ConnectionManager.cs" />
+    <Compile Include="Managers\ConnectionManager.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
