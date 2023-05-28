@@ -68,6 +68,26 @@ namespace InventoryApp.Services
             labelTotalAfterDiscount.Text = totalAfterDiscount.ToString();
         }
 
+        public void CalculateChange(Label totalLabel, TextBox paidTextBox, Label changeLabel)
+        {
+            decimal totalAmount = decimal.Parse(totalLabel.Text);
+            decimal paidAmount;
+
+            if (decimal.TryParse(paidTextBox.Text, out paidAmount))
+            {
+                decimal change = paidAmount - totalAmount;
+                if (change < 0)
+                {
+                    change = 0;
+                }
+                changeLabel.Text = change.ToString();
+            }
+            else
+            {
+                changeLabel.Text = string.Empty;
+            }
+        }
+
         public bool ProcessTransaction(string totalText, string cashText, object selectedItem, string transactionId)
         {
             int total = Convert.ToInt32(totalText);
