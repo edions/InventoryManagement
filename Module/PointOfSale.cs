@@ -79,6 +79,7 @@ namespace InventoryApp.Services
                 if (change < 0)
                 {
                     change = 0;
+                    changeLabel.Text = "0";
                 }
                 changeLabel.Text = change.ToString();
             }

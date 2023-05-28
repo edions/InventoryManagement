@@ -134,6 +134,7 @@
             this.label8.Size = new System.Drawing.Size(13, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "0";
+            this.label8.TextChanged += new System.EventHandler(this.label8_TextChanged);
             // 
             // label7
             // 
