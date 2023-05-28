@@ -61,6 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\CartManager.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
+    <Compile Include="Managers\ProductManager.cs" />
+    <Compile Include="Managers\StockManager.cs" />
+    <Compile Include="Module\PointOfSale.cs" />
     <Compile Include="Views\CartViews\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,19 +96,13 @@
     <Compile Include="Views\TransactionView\Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryViews\EditCat.cs">
+    <Compile Include="Views\CategoryViews\CatDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CategoryViews\EditCat.Designer.cs">
-      <DependentUpon>EditCat.cs</DependentUpon>
+    <Compile Include="Views\CategoryViews\CatDialog.Designer.cs">
+      <DependentUpon>CatDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryViews\CreateCat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\CategoryViews\CreateCat.Designer.cs">
-      <DependentUpon>CreateCat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ConnectionManager.cs" />
+    <Compile Include="Managers\ConnectionManager.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,35 +115,29 @@
     <Compile Include="Views\CategoryViews\Category.Designer.cs">
       <DependentUpon>Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HomeViews\AddStock.cs">
+    <Compile Include="Views\ProductViews\AddStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\HomeViews\AddStock.Designer.cs">
+    <Compile Include="Views\ProductViews\AddStock.Designer.cs">
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HomeViews\History.cs">
+    <Compile Include="Views\ProductViews\History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\HomeViews\History.Designer.cs">
+    <Compile Include="Views\ProductViews\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HomeViews\Home.cs">
+    <Compile Include="Views\ProductViews\Product.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\HomeViews\Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
+    <Compile Include="Views\ProductViews\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\HomeViews\EditProd.cs">
+    <Compile Include="Views\ProductViews\ProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\HomeViews\EditProd.Designer.cs">
-      <DependentUpon>EditProd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HomeViews\CreateProd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\HomeViews\CreateProd.Designer.cs">
-      <DependentUpon>CreateProd.cs</DependentUpon>
+    <Compile Include="Views\ProductViews\ProductDialog.Designer.cs">
+      <DependentUpon>ProductDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,11 +156,8 @@
     <EmbeddedResource Include="Views\TransactionView\Transaction.resx">
       <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CategoryViews\EditCat.resx">
-      <DependentUpon>EditCat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CategoryViews\CreateCat.resx">
-      <DependentUpon>CreateCat.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CategoryViews\CatDialog.resx">
+      <DependentUpon>CatDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -175,20 +165,17 @@
     <EmbeddedResource Include="Views\CategoryViews\Category.resx">
       <DependentUpon>Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\HomeViews\AddStock.resx">
+    <EmbeddedResource Include="Views\ProductViews\AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\HomeViews\History.resx">
+    <EmbeddedResource Include="Views\ProductViews\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\HomeViews\Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ProductViews\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\HomeViews\EditProd.resx">
-      <DependentUpon>EditProd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\HomeViews\CreateProd.resx">
-      <DependentUpon>CreateProd.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ProductViews\ProductDialog.resx">
+      <DependentUpon>ProductDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

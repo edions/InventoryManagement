@@ -1,42 +1,27 @@
 ﻿using System.Data.SqlClient;
-using System.Data;
 using System.Windows.Forms;
+using InventoryApp.Entity;
 
 namespace InventoryApp.InventoryApp.Views
 {
     public partial class Category : Form
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
+        private readonly CategoryManager categoryManager;
         public Category()
         {
             InitializeComponent();
-            CategoryDisplay();
+            categoryManager = new CategoryManager(con);
+            dataGridView1.DataSource = categoryManager.GetCategories();
         }
 
-        //FETCH DATA FROM CATEGORY DATABASE
-        private void CategoryDisplay()
-        {
-            con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Category";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
-        }
-
-        //ADD BUTTON
-        //Category
+        //ADD BUTTON - Category
         private void button1_Click(object sender, System.EventArgs e)
         {
-            CreateCat dlg = new CreateCat();
+            CatDialog dlg = new CatDialog(categoryManager);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                //Refresh DataGridView when "InsertCat" is close
-                CategoryDisplay();
+                dataGridView1.DataSource = categoryManager.GetCategories();
             }
         }
 
@@ -51,16 +36,16 @@ namespace InventoryApp.InventoryApp.Views
                 string categoryItem = row.Cells["CategoryItem"].Value.ToString();
 
                 // Pass the data to EditCat
-                EditCat dlg = new EditCat(id, categoryItem);
+                CatDialog dlg = new CatDialog(categoryManager, id, categoryItem);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    // Refresh DataGridView when "EditCategory Dialog" is closed
-                    CategoryDisplay();
+                    dataGridView1.DataSource = categoryManager.GetCategories();
                 }
             }
             else
             {
-                MessageBox.Show("No category is available for editing.", "Empty Category", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No category is available for editing.", "Empty Category",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -73,19 +58,7 @@ namespace InventoryApp.InventoryApp.Views
 
                 if (MessageBox.Show("Are you sure want to remove this category?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    con.Open();
-
-                    // Construct the DELETE statement
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "DELETE FROM Category WHERE ID = @ID";
-                    cmd.Parameters.AddWithValue("@ID", id);
-
-                    // Execute the DELETE statement
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    // Remove the row from the DataGridView
+                    categoryManager.DeleteCategory(id);
                     dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
                 }
             }

@@ -71,9 +71,9 @@ VALUES
 ('Dining Table', 300, 25, 1, 'Furniture'),
 ('Garden Tools', 50, 50, 1, 'Garden'),
 ('Plant Pot', 20, 80, 1, 'Garden'),
-('Movie 1', 10, 100, 1, 'Movies'),
-('Movie 2', 15, 80, 1, 'Movies'),
-('Music Album 1', 8, 200, 1, 'Music'),
-('Music Album 2', 12, 150, 1, 'Music'),
+('John Wick: Chapter 3', 10, 100, 1, 'Movies'),
+('John Wick: Chapter 4', 15, 80, 1, 'Movies'),
+('EGOIST', 8, 200, 1, 'Music'),
+('Kessoku Band', 12, 150, 1, 'Music'),
 ('Dog Food', 5, 100, 1, 'Pets'),
 ('Cat Food', 4, 120, 1, 'Pets');
