@@ -173,6 +173,21 @@ namespace InventoryApp.Services
 
             con.Close();
         }
+
+        public string GenerateTransactionId()
+        {
+            string uniqueTransactionId;
+
+            do
+            {
+                uniqueTransactionId = Guid.NewGuid().ToString();
+            }
+            while (generatedIds.Contains(uniqueTransactionId));
+
+            generatedIds.Add(uniqueTransactionId);
+
+            return uniqueTransactionId;
+        }
     }
 
     public class ComboBoxItem

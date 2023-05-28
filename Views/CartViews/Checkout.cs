@@ -51,6 +51,9 @@ namespace InventoryApp
         // INSERT STOCK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
+            PointOfSale pointOfSale = new PointOfSale();
+            string transactionId = pointOfSale.GenerateTransactionId();
+
             if (pointOfSale.ProcessTransaction(label3.Text, textBox2.Text, comboBox1.SelectedItem, transactionId))
             {
                 pointOfSale.InsertTransactionItems(listBox1, transactionId);
