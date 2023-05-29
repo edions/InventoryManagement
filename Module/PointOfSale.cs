@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryApp.Managers;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -113,32 +114,12 @@ namespace InventoryApp.Services
             double change = cash - (total - discountAmount);
             DateTime currentDate = DateTime.Now;
 
-            // Save the transaction data to the database
+            SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
+            TransactionManager transactionManager = new TransactionManager(con);
             try
             {
-                con.Open();
-                string insertQuery = "INSERT INTO [Transaction] (TransactionId, Total, Cash, DiscountPercent, DiscountAmount, [Change], Date) VALUES (@TransactionId, @Total, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Date)";
-
-                using (SqlCommand command = new SqlCommand(insertQuery, con))
-                {
-                    command.Parameters.AddWithValue("@TransactionId", transactionId);
-                    command.Parameters.AddWithValue("@Total", total);
-                    command.Parameters.AddWithValue("@Cash", cash);
-                    command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
-                    command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
-                    command.Parameters.AddWithValue("@Change", change);
-                    command.Parameters.AddWithValue("@Date", currentDate);
-                    command.ExecuteNonQuery();
-                }
-
-                // Delete the data from the Cart table after successful transaction
-                string deleteQuery = "DELETE FROM [Cart]";
-                using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, con))
-                {
-                    deleteCommand.ExecuteNonQuery();
-                }
-
-                con.Close();
+                transactionManager.SaveTransactionToDatabase(transactionId, total, cash, discountPercent, discountAmount, change, currentDate);
+                transactionManager.DeleteCartData();
                 return true;
             }
             catch (Exception ex)
