@@ -92,9 +92,10 @@ namespace InventoryApp.Services
 
         public bool ProcessTransaction(string totalText, string cashText, object selectedItem, string transactionId)
         {
-            int total = Convert.ToInt32(totalText);
+            int subtotal = Convert.ToInt32(totalText);
             int cash = string.IsNullOrWhiteSpace(cashText) ? 0 : Convert.ToInt32(cashText);
             double discountPercent = 0;
+            double totalAfterDiscount = 0;
 
             if (selectedItem is ComboBoxItem selectedComboBoxItem)
             {
@@ -102,29 +103,36 @@ namespace InventoryApp.Services
             }
 
             // Calculate the discount amount
-            double discountAmount = total * (discountPercent / 100);
+            double discountAmount = subtotal * (discountPercent / 100);
+
+            // Calculate the total after discount
+            double total = subtotal - discountAmount;
 
             // Validate if there is enough cash
-            if (cash < (total - discountAmount))
+            if (cash < total)
             {
                 MessageBox.Show("Not enough cash to complete the transaction.");
+                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction cannot be completed
                 return false;
             }
 
-            double change = cash - (total - discountAmount);
+            double change = cash - total;
             DateTime currentDate = DateTime.Now;
 
             SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
             TransactionManager transactionManager = new TransactionManager(con);
             try
             {
-                transactionManager.SaveTransactionToDatabase(transactionId, total, cash, discountPercent, discountAmount, change, currentDate);
+                transactionManager.SaveTransactionToDatabase(transactionId, subtotal, cash, discountPercent, discountAmount, change, currentDate, total);
                 transactionManager.DeleteCartData();
+
+                totalAfterDiscount = total; // Assign the calculated total after discount
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
+                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction could not be saved
                 return false;
             }
         }
