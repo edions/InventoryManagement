@@ -4,8 +4,9 @@
     [Date] DATETIME NULL, 
     [Total] INT NULL, 
     [Cash] INT NULL, 
-    [Change] DECIMAL(18, 2) NULL, 
     [DiscountPercent] INT NULL, 
     [DiscountAmount] DECIMAL(18, 2) NULL, 
+    [Total] INT NULL, 
+    [Change] DECIMAL(18, 2) NULL, 
     [TransactionId] VARCHAR(MAX) NULL,
 )
