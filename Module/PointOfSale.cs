@@ -96,8 +96,6 @@ namespace InventoryApp.Services
             int subtotal = Convert.ToInt32(totalText);
             int cash = string.IsNullOrWhiteSpace(cashText) ? 0 : Convert.ToInt32(cashText);
             double discountPercent = 0;
-            double totalAfterDiscount = 0;
-
             if (selectedItem is ComboBoxItem selectedComboBoxItem)
             {
                 discountPercent = selectedComboBoxItem.Value;
@@ -109,6 +107,7 @@ namespace InventoryApp.Services
             // Calculate the total after discount
             double total = subtotal - discountAmount;
 
+            double totalAfterDiscount;
             // Validate if there is enough cash
             if (cash < total)
             {

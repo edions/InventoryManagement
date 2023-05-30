@@ -149,7 +149,7 @@ namespace InventoryApp.Entity
                         reader.Close();
 
                         // Item does not exist in the cart, insert a new row
-                        string insertQuery = "INSERT INTO Cart (Name, Price, Quantity) VALUES (@Name, @Price, 1)";
+                        string insertQuery = "INSERT INTO Cart (ProductId, Name, Price, Quantity) VALUES ((SELECT Id FROM Product WHERE Name = @Name), @Name, @Price, 1)";
 
                         using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
                         {
