@@ -161,14 +161,24 @@ namespace InventoryApp
                 // Get the values from the selected row
                 string name = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
                 int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Price"].Value);
+                int stock = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value);
 
                 // Add item to the cart
-                bool itemAdded = ProductManager.AddItemToCart(name, price);
+                bool itemAdded = false;
 
-                // Provide feedback when item successfully added to cart
-                if (itemAdded)
+                if (stock > 0)
                 {
-                    MessageBox.Show("Product added to cart.");
+                    itemAdded = ProductManager.AddItemToCart(name, price);
+                    if (itemAdded)
+                    {
+                        // Decrease stock by 1 after adding to cart
+                        dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value = stock - 1;
+                        MessageBox.Show("Product added to cart.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Product out of stock.");
                 }
             }
         }

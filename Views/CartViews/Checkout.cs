@@ -22,8 +22,7 @@ namespace InventoryApp
         // ON TEXT CHANGED
         public void ChangeEventHandler()
         {
-            decimal paidAmount;
-            if (decimal.TryParse(textBox2.Text, out paidAmount))
+            if (decimal.TryParse(textBox2.Text, out _))
             {
                 pointOfSale.CalculateChange(label8, textBox2, label10);
             }
@@ -32,6 +31,12 @@ namespace InventoryApp
         // COMBOBOX EVENT
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pointOfSale.CalculateDiscount(label3.Text, comboBox1.SelectedItem, label7, label8);
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            // TODO: not working
             pointOfSale.CalculateDiscount(label3.Text, comboBox1.SelectedItem, label7, label8);
         }
 

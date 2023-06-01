@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryApp.Managers;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace InventoryApp.Services
             comboBox.Items.Add(new ComboBoxItem { Value = 15, Description = "15% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 30, Description = "30% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 50, Description = "50% off" });
+            comboBox.Items.Add("Custom");
         }
 
         public void LoadCartItems(ListBox listBox)
@@ -91,59 +93,46 @@ namespace InventoryApp.Services
 
         public bool ProcessTransaction(string totalText, string cashText, object selectedItem, string transactionId)
         {
-            int total = Convert.ToInt32(totalText);
+            int subtotal = Convert.ToInt32(totalText);
             int cash = string.IsNullOrWhiteSpace(cashText) ? 0 : Convert.ToInt32(cashText);
             double discountPercent = 0;
-
             if (selectedItem is ComboBoxItem selectedComboBoxItem)
             {
                 discountPercent = selectedComboBoxItem.Value;
             }
 
             // Calculate the discount amount
-            double discountAmount = total * (discountPercent / 100);
+            double discountAmount = subtotal * (discountPercent / 100);
 
+            // Calculate the total after discount
+            double total = subtotal - discountAmount;
+
+            double totalAfterDiscount;
             // Validate if there is enough cash
-            if (cash < (total - discountAmount))
+            if (cash < total)
             {
                 MessageBox.Show("Not enough cash to complete the transaction.");
+                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction cannot be completed
                 return false;
             }
 
-            double change = cash - (total - discountAmount);
+            double change = cash - total;
             DateTime currentDate = DateTime.Now;
 
-            // Save the transaction data to the database
+            SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
+            TransactionManager transactionManager = new TransactionManager(con);
             try
             {
-                con.Open();
-                string insertQuery = "INSERT INTO [Transaction] (TransactionId, Total, Cash, DiscountPercent, DiscountAmount, [Change], Date) VALUES (@TransactionId, @Total, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Date)";
+                transactionManager.SaveTransactionToDatabase(transactionId, subtotal, cash, discountPercent, discountAmount, change, currentDate, total);
+                transactionManager.DeleteCartData();
 
-                using (SqlCommand command = new SqlCommand(insertQuery, con))
-                {
-                    command.Parameters.AddWithValue("@TransactionId", transactionId);
-                    command.Parameters.AddWithValue("@Total", total);
-                    command.Parameters.AddWithValue("@Cash", cash);
-                    command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
-                    command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
-                    command.Parameters.AddWithValue("@Change", change);
-                    command.Parameters.AddWithValue("@Date", currentDate);
-                    command.ExecuteNonQuery();
-                }
-
-                // Delete the data from the Cart table after successful transaction
-                string deleteQuery = "DELETE FROM [Cart]";
-                using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, con))
-                {
-                    deleteCommand.ExecuteNonQuery();
-                }
-
-                con.Close();
+                totalAfterDiscount = total; // Assign the calculated total after discount
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
+                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction could not be saved
                 return false;
             }
         }

@@ -65,6 +65,7 @@
     <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\ProductManager.cs" />
     <Compile Include="Managers\StockManager.cs" />
+    <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Module\PointOfSale.cs" />
     <Compile Include="Views\CartViews\Cart.cs">
       <SubType>Form</SubType>
