@@ -15,6 +15,14 @@ namespace InventoryApp.Managers
         public void SaveTransactionToDatabase(string transactionId, int subtotal, int cash, double discountPercent, double discountAmount, double change, DateTime currentDate, double total)
         {
             con.Open();
+
+            // Get the quantity from the Cart table and update the product stock
+            string updateStockQuery = "UPDATE Product SET Stock = Stock - Cart.Quantity FROM Product INNER JOIN Cart ON Product.Id = Cart.ProductId";
+            using (SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, con))
+            {
+                updateStockCommand.ExecuteNonQuery();
+            }
+
             string insertQuery = "INSERT INTO [Transaction] (TransactionId, Subtotal, Cash, DiscountPercent, DiscountAmount, [Change], Total, Date) VALUES (@TransactionId, @Subtotal, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Total, @Date)";
 
             using (SqlCommand command = new SqlCommand(insertQuery, con))
