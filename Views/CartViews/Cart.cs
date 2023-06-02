@@ -23,7 +23,7 @@ namespace InventoryApp.InventoryApp.Views
         }
 
         //CHECKOUT BUTTON - Cart
-        private void button1_Click(object sender, System.EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             decimal totalPrice = cartManager.GetTotalPrice();
             if (totalPrice > 0)
@@ -61,7 +61,7 @@ namespace InventoryApp.InventoryApp.Views
         }
 
         //REMOVE BUTTON - Cart
-        private void button2_Click(object sender, System.EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
