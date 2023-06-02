@@ -164,15 +164,11 @@ namespace InventoryApp
                 int stock = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value);
 
                 // Add item to the cart
-                bool itemAdded = false;
-
                 if (stock > 0)
                 {
-                    itemAdded = ProductManager.AddItemToCart(name, price);
+                    bool itemAdded = ProductManager.AddItemToCart(name, price);
                     if (itemAdded)
                     {
-                        // Decrease stock by 1 after adding to cart
-                        dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value = stock - 1;
                         MessageBox.Show("Product added to cart.");
                     }
                 }
