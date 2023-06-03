@@ -13,6 +13,7 @@ namespace InventoryApp.Entity
             con = ConnectionManager.GetConnection();
         }
 
+        // Update Quantity
         public void UpdateQuantityInCart(int itemId, string quantity)
         {
             con.Open();
@@ -27,6 +28,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
+        // Fetch data from Cart
         public DataTable GetCartItems()
         {
             using (SqlConnection con = ConnectionManager.GetConnection())
@@ -43,6 +45,7 @@ namespace InventoryApp.Entity
             }
         }
 
+        // Total Price
         public decimal GetTotalPrice()
         {
             decimal totalPrice = 0;
@@ -65,6 +68,7 @@ namespace InventoryApp.Entity
             return totalPrice;
         }
 
+        // Remove product from Cart
         public void RemoveCartItem(int id)
         {
             using (SqlConnection con = ConnectionManager.GetConnection())

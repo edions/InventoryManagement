@@ -12,6 +12,7 @@ namespace InventoryApp.Managers
             con = connection;
         }
 
+        // Saved Transaction
         public void SaveTransactionToDatabase(string transactionId, int subtotal, int cash, double discountPercent, double discountAmount, double change, DateTime currentDate, double total)
         {
             con.Open();
@@ -41,6 +42,7 @@ namespace InventoryApp.Managers
             con.Close();
         }
 
+        // Delete Cart data after Transactions
         public void DeleteCartData()
         {
             con.Open();

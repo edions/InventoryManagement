@@ -8,6 +8,7 @@ namespace InventoryApp.Entity
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
 
+        // Get Product by Id
         public int GetProductIdByName(string itemName)
         {
             con.Open();
@@ -18,6 +19,7 @@ namespace InventoryApp.Entity
             return productId;
         }
 
+        // Get Stock by Id
         public int GetCurrentStockById(int productId)
         {
             con.Open();
@@ -28,6 +30,7 @@ namespace InventoryApp.Entity
             return currentStock;
         }
 
+        // Update Stock
         public void UpdateStock(int productId, int newStock)
         {
             con.Open();
@@ -40,6 +43,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
+        // Insert History
         public void InsertHistory(int productId, int addedStocks)
         {
             con.Open();

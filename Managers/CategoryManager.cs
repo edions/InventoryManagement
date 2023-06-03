@@ -12,7 +12,7 @@ namespace InventoryApp.Entity
             con = connection;
         }
 
-        //Fetch data from Category
+        // Fetch data from Category
         public DataTable GetCategories()
         {
             con.Open();
@@ -26,7 +26,7 @@ namespace InventoryApp.Entity
             return dt;
         }
 
-        //Add new Category
+        // Add new Category
         public void AddCategory(string categoryItem)
         {
             con.Open();
@@ -38,7 +38,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
-        //Update Category
+        // Update Category
         public void UpdateCategory(int id, string categoryItem)
         {
             con.Open();
@@ -51,7 +51,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
-        //Delete Category
+        // Delete Category
         public void DeleteCategory(int id)
         {
             con.Open();
