@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using InventoryApp.InventoryApp.dlg;
 using InventoryApp.Entity;
 using System.Data;
@@ -9,12 +8,12 @@ namespace InventoryApp
 {
     public partial class Product : Form
     {
-        readonly SqlConnection con = ConnectionManager.GetConnection();
+        //readonly SqlConnection con = ConnectionManager.GetConnection();
         private readonly ProductManager productManager;
         public Product()
         {
             InitializeComponent();
-            productManager = new ProductManager(con);
+            productManager = new ProductManager();
             dataGridView1.DataSource = productManager.GetProducts();
             AddToCart();
         }

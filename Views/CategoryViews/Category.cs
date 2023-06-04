@@ -1,17 +1,16 @@
-﻿using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using InventoryApp.Entity;
 
 namespace InventoryApp.InventoryApp.Views
 {
     public partial class Category : Form
     {
-        readonly SqlConnection con = ConnectionManager.GetConnection();
+        //readonly SqlConnection con = ConnectionManager.GetConnection();
         private readonly CategoryManager categoryManager;
         public Category()
         {
             InitializeComponent();
-            categoryManager = new CategoryManager(con);
+            categoryManager = new CategoryManager();
             dataGridView1.DataSource = categoryManager.GetCategories();
         }
 

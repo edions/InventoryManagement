@@ -9,11 +9,6 @@ namespace InventoryApp.Entity
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
 
-        public ProductManager(SqlConnection connection)
-        {
-            con = connection;
-        }
-
         // Fetch data from Product
         public DataTable GetProducts()
         {

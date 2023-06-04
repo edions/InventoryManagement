@@ -6,12 +6,7 @@ namespace InventoryApp.Entity
 {
     public class CartManager
     {
-        private readonly SqlConnection con;
-
-        public CartManager()
-        {
-            con = ConnectionManager.GetConnection();
-        }
+        readonly SqlConnection con = ConnectionManager.GetConnection();
 
         // Update Quantity
         public void UpdateQuantityInCart(int itemId, string quantity)

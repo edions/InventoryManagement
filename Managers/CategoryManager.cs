@@ -5,12 +5,7 @@ namespace InventoryApp.Entity
 {
     public class CategoryManager
     {
-        private readonly SqlConnection con;
-
-        public CategoryManager(SqlConnection connection)
-        {
-            con = connection;
-        }
+        readonly SqlConnection con = ConnectionManager.GetConnection();
 
         // Fetch data from Category
         public DataTable GetCategories()
