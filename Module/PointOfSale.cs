@@ -1,14 +1,12 @@
-﻿using InventoryApp.Managers;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System;
 using System.Windows.Forms;
+using InventoryApp.Managers;
+using System.Collections.Generic;
 
 namespace InventoryApp.Services
 {
     public class PointOfSale
     {
-        private readonly SqlConnection con = ConnectionManager.GetConnection();
         private static readonly HashSet<string> generatedIds = new HashSet<string>();
 
         public void InitializeComboBox(ComboBox comboBox)
@@ -78,14 +76,12 @@ namespace InventoryApp.Services
             if (cash < total)
             {
                 MessageBox.Show("Not enough cash to complete the transaction.");
-                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction cannot be completed
                 return false;
             }
 
             double change = cash - total;
             DateTime currentDate = DateTime.Now;
 
-            //SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
             TransactionManager transactionManager = new TransactionManager();
             try
             {
@@ -98,7 +94,6 @@ namespace InventoryApp.Services
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
-                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction could not be saved
                 return false;
             }
         }
