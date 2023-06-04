@@ -1,4 +1,5 @@
-﻿using InventoryApp.Services;
+﻿using InventoryApp.Managers;
+using InventoryApp.Services;
 using System;
 using System.Windows.Forms;
 
@@ -55,12 +56,13 @@ namespace InventoryApp
         // INSERT STOCK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
-            PointOfSale pointOfSale = new PointOfSale();
+            //PointOfSale pointOfSale = new PointOfSale();
+            TransactionManager transactionManager = new TransactionManager();
             string transactionId = pointOfSale.GenerateTransactionId();
 
             if (pointOfSale.ProcessTransaction(label3.Text, textBox2.Text, comboBox1.SelectedItem, transactionId))
             {
-                pointOfSale.InsertTransactionItems(listBox1, transactionId);
+                transactionManager.InsertTransactionItems(listBox1, transactionId);
                 DialogResult = DialogResult.OK;
             }
         }

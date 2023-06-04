@@ -119,8 +119,8 @@ namespace InventoryApp.Services
             double change = cash - total;
             DateTime currentDate = DateTime.Now;
 
-            SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
-            TransactionManager transactionManager = new TransactionManager(con);
+            //SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
+            TransactionManager transactionManager = new TransactionManager();
             try
             {
                 transactionManager.SaveTransactionToDatabase(transactionId, subtotal, cash, discountPercent, discountAmount, change, currentDate, total);
@@ -135,32 +135,6 @@ namespace InventoryApp.Services
                 totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction could not be saved
                 return false;
             }
-        }
-
-        public void InsertTransactionItems(ListBox listBox, string transactionId)
-        {
-            con.Open();
-            string insertQuery = "INSERT INTO Orders (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
-
-            using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
-            {
-                foreach (var item in listBox.Items)
-                {
-                    string[] parts = item.ToString().Split(new string[] { " x ", " - $" }, StringSplitOptions.None);
-                    string name = parts[1];
-                    decimal price = decimal.Parse(parts[2]);
-                    int quantity = int.Parse(parts[0]);
-
-                    insertCommand.Parameters.Clear();
-                    insertCommand.Parameters.AddWithValue("@TransactionId", transactionId);
-                    insertCommand.Parameters.AddWithValue("@Name", name);
-                    insertCommand.Parameters.AddWithValue("@Price", price);
-                    insertCommand.Parameters.AddWithValue("@Quantity", quantity);
-                    insertCommand.ExecuteNonQuery();
-                }
-            }
-
-            con.Close();
         }
 
         public string GenerateTransactionId()
