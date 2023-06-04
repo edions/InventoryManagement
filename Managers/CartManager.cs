@@ -9,6 +9,23 @@ namespace InventoryApp.Entity
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
 
+        // Fetch data from Cart
+        public DataTable GetCartItems()
+        {
+            using (SqlConnection con = ConnectionManager.GetConnection())
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT Name, Price, Quantity, ProductId FROM [Cart]", con))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
         // Update Quantity
         public void UpdateQuantityInCart(int itemId, string quantity)
         {
@@ -22,23 +39,6 @@ namespace InventoryApp.Entity
                 cmd.ExecuteNonQuery();
             }
             con.Close();
-        }
-
-        // Fetch data from Cart
-        public DataTable GetCartItems()
-        {
-            using (SqlConnection con = ConnectionManager.GetConnection())
-            {
-                con.Open();
-
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Cart", con))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-                }
-            }
         }
 
         // Total Price
