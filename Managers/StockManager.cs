@@ -55,5 +55,26 @@ namespace InventoryApp.Entity
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        // Get Product stock for Quantity
+        public int GetProductStock(int productId)
+        {
+            int stock = 0;
+
+            con.Open();
+            string selectQuery = "SELECT Stock FROM Product WHERE Id = @ProductId";
+            using (SqlCommand selectCommand = new SqlCommand(selectQuery, con))
+            {
+                selectCommand.Parameters.AddWithValue("@ProductId", productId);
+
+                object result = selectCommand.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    stock = Convert.ToInt32(result);
+                }
+            }
+            con.Close();
+            return stock;
+        }
     }
 }

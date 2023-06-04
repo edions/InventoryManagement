@@ -45,10 +45,10 @@ namespace InventoryApp.InventoryApp.Views
         {
             if (dataGridView1.Rows.Count > 0 && dataGridView1.SelectedRows.Count > 0)
             {
-                int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
                 int quantity = (int)dataGridView1.SelectedRows[0].Cells["Quantity"].Value;
+                int productId = (int)dataGridView1.SelectedRows[0].Cells["ProductId"].Value;
 
-                Quantity dlg = new Quantity(id, quantity);
+                Quantity dlg = new Quantity(quantity, productId);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     DisplayCartItem();

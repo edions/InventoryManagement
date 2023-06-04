@@ -7,12 +7,13 @@ namespace InventoryApp
     public partial class Quantity : Form
     {
         private readonly CartManager cartManager;
-        private readonly int itemId;
-        public Quantity(int id, int quantity)
+
+        private readonly int productId;
+        public Quantity(int quantity, int productId)
         {
             InitializeComponent();
 
-            itemId = id;
+            this.productId = productId;
             textBox2.Text = quantity.ToString();
 
             cartManager = new CartManager();
@@ -58,15 +59,24 @@ namespace InventoryApp
 
         private void IncrementQuantity()
         {
+            StockManager stockManager = new StockManager();
+
             int value = int.Parse(textBox2.Text);
-            value++;
-            textBox2.Text = value.ToString();
+            int stock = stockManager.GetProductStock(productId);
+            if (value < stock)
+            {
+                value++;
+                textBox2.Text = value.ToString();
+            } else
+            {
+                MessageBox.Show("Cannot increment quantity. Stock limit reached.");
+            }
         }
 
         private void UpdateQuantityInCart()
         {
             string quantity = textBox2.Text;
-            cartManager.UpdateQuantityInCart(itemId, quantity);
+            cartManager.UpdateQuantityInCart(productId, quantity);
         }
     }
 }

@@ -16,9 +16,9 @@ namespace InventoryApp.Entity
             using (SqlCommand cmd = con.CreateCommand())
             {
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "UPDATE Cart SET Quantity = @quantity WHERE Id = @id";
+                cmd.CommandText = "UPDATE Cart SET Quantity = @quantity WHERE ProductId = @productId";
                 cmd.Parameters.AddWithValue("@quantity", quantity);
-                cmd.Parameters.AddWithValue("@id", itemId);
+                cmd.Parameters.AddWithValue("@productId", itemId);
                 cmd.ExecuteNonQuery();
             }
             con.Close();
