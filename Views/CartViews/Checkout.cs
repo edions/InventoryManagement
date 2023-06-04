@@ -1,4 +1,5 @@
-﻿using InventoryApp.Managers;
+﻿using InventoryApp.Entity;
+using InventoryApp.Managers;
 using InventoryApp.Services;
 using System;
 using System.Windows.Forms;
@@ -13,11 +14,13 @@ namespace InventoryApp
             InitializeComponent();
 
             pointOfSale = new PointOfSale();
+            CartManager cartManager = new CartManager();
+
             label3.Text = totalPrice.ToString();
 
             pointOfSale.InitializeComboBox(comboBox1);
             pointOfSale.CalculateDiscount(label3.Text, comboBox1.SelectedItem, label7, label8);
-            pointOfSale.LoadCartItems(listBox1);
+            cartManager.LoadCartItems(listBox1);
         }
 
         // ON TEXT CHANGED

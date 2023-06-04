@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using System;
+using System.Windows.Forms;
 
 namespace InventoryApp.Entity
 {
@@ -75,6 +76,41 @@ namespace InventoryApp.Entity
                 cmd.CommandText = "DELETE FROM Cart WHERE ID = @ID";
                 cmd.Parameters.AddWithValue("@ID", id);
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        // Load Cart items to ListBox
+        public void LoadCartItems(ListBox listBox)
+        {
+            try
+            {
+                con.Open();
+
+                string selectQuery = "SELECT Name, Price, Quantity FROM Cart";
+
+                using (SqlCommand command = new SqlCommand(selectQuery, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        listBox.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            string name = reader["Name"].ToString();
+                            int price = Convert.ToInt32(reader["Price"]);
+                            int quantity = Convert.ToInt32(reader["Quantity"]);
+
+                            string item = $"{quantity} x {name} - ${price}";
+                            listBox.Items.Add(item);
+                        }
+                    }
+                }
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading cart items: " + ex.Message);
             }
         }
     }

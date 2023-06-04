@@ -20,40 +20,6 @@ namespace InventoryApp.Services
             //comboBox.Items.Add("Custom");
         }
 
-        public void LoadCartItems(ListBox listBox)
-        {
-            try
-            {
-                con.Open();
-
-                string selectQuery = "SELECT Name, Price, Quantity FROM Cart";
-
-                using (SqlCommand command = new SqlCommand(selectQuery, con))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        listBox.Items.Clear();
-
-                        while (reader.Read())
-                        {
-                            string name = reader["Name"].ToString();
-                            int price = Convert.ToInt32(reader["Price"]);
-                            int quantity = Convert.ToInt32(reader["Quantity"]);
-
-                            string item = $"{quantity} x {name} - ${price}";
-                            listBox.Items.Add(item);
-                        }
-                    }
-                }
-
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while loading cart items: " + ex.Message);
-            }
-        }
-
         public void CalculateDiscount(string totalText, object selectedItem, Label labelDiscount, Label labelTotalAfterDiscount)
         {
             int total = Convert.ToInt32(totalText);
