@@ -56,7 +56,6 @@ namespace InventoryApp
         // INSERT STOCK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
-            //PointOfSale pointOfSale = new PointOfSale();
             TransactionManager transactionManager = new TransactionManager();
             string transactionId = pointOfSale.GenerateTransactionId();
 

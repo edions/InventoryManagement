@@ -8,7 +8,6 @@ namespace InventoryApp
 {
     public partial class Product : Form
     {
-        //readonly SqlConnection con = ConnectionManager.GetConnection();
         private readonly ProductManager productManager;
         public Product()
         {

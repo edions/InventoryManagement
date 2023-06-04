@@ -5,7 +5,6 @@ namespace InventoryApp.InventoryApp.Views
 {
     public partial class Category : Form
     {
-        //readonly SqlConnection con = ConnectionManager.GetConnection();
         private readonly CategoryManager categoryManager;
         public Category()
         {

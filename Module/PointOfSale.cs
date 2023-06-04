@@ -17,7 +17,7 @@ namespace InventoryApp.Services
             comboBox.Items.Add(new ComboBoxItem { Value = 15, Description = "15% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 30, Description = "30% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 50, Description = "50% off" });
-            comboBox.Items.Add("Custom");
+            //comboBox.Items.Add("Custom");
         }
 
         public void LoadCartItems(ListBox listBox)
