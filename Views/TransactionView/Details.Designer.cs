@@ -69,6 +69,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Details";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Details";
             this.groupBox1.ResumeLayout(false);
