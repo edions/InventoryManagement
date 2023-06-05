@@ -14,12 +14,13 @@ namespace InventoryApp.InventoryApp
             InitializeComponent();
             SwitchForm(new Product());
 
+            // Initialize Cart item counter
             timer1 = new Timer
             {
-                Interval = 1000 // Set the interval to 1000 milliseconds (1 second)
+                Interval = 1000
             };
-            timer1.Tick += timer1_Tick; // Attach the event handler
-            timer1.Start(); // Start the timer
+            timer1.Tick += timer1_Tick;
+            timer1.Start();
         }
 
         //NAVIGATION CONTROL

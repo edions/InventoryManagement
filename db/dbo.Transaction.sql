@@ -4,7 +4,7 @@
     [Date] DATETIME NULL, 
     [Subtotal] INT NULL, 
     [Cash] INT NULL, 
-    [DiscountPercent] INT NULL, 
+    [DiscountPercent] VARCHAR(50) NULL, 
     [DiscountAmount] DECIMAL(18, 2) NULL, 
     [Total] INT NULL, 
     [Change] DECIMAL(18, 2) NULL, 

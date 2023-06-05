@@ -37,9 +37,8 @@ namespace InventoryApp.Services
         public void CalculateChange(Label totalLabel, TextBox paidTextBox, Label changeLabel)
         {
             decimal totalAmount = decimal.Parse(totalLabel.Text);
-            decimal paidAmount;
 
-            if (decimal.TryParse(paidTextBox.Text, out paidAmount))
+            if (decimal.TryParse(paidTextBox.Text, out decimal paidAmount))
             {
                 decimal change = paidAmount - totalAmount;
                 if (change < 0)

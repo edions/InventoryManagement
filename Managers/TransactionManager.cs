@@ -54,7 +54,7 @@ namespace InventoryApp.Managers
                 command.Parameters.AddWithValue("@TransactionId", transactionId);
                 command.Parameters.AddWithValue("@Subtotal", subtotal);
                 command.Parameters.AddWithValue("@Cash", cash);
-                command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
+                command.Parameters.AddWithValue("@DiscountPercent", Math.Round(discountPercent, 0) + "%");
                 command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
                 command.Parameters.AddWithValue("@Change", change);
                 command.Parameters.AddWithValue("@Total", total);
