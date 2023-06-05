@@ -69,7 +69,7 @@ namespace InventoryApp
                 textBox2.Text = value.ToString();
             } else
             {
-                MessageBox.Show("Cannot increment quantity. Stock limit reached.");
+                MessageBox.Show("Stock limit reached.");
             }
         }
 
