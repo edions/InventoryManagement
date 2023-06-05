@@ -65,7 +65,7 @@ namespace InventoryApp.Entity
         }
 
         // Remove product from Cart
-        public void RemoveCartItem(int id)
+        public void RemoveCartItem(int productId)
         {
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
@@ -73,8 +73,8 @@ namespace InventoryApp.Entity
 
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM Cart WHERE ID = @ID";
-                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.CommandText = "DELETE FROM Cart WHERE ProductId = @ProductId";
+                cmd.Parameters.AddWithValue("@ProductId", productId);
                 cmd.ExecuteNonQuery();
             }
         }

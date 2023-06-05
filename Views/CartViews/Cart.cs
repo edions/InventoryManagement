@@ -65,11 +65,11 @@ namespace InventoryApp.InventoryApp.Views
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                int id = (int)dataGridView1.SelectedRows[0].Cells["ID"].Value;
+                int productId = (int)dataGridView1.SelectedRows[0].Cells["ProductId"].Value;
 
                 if (MessageBox.Show("Are you sure want to remove this item from your cart?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    cartManager.RemoveCartItem(id);
+                    cartManager.RemoveCartItem(productId);
                     DisplayCartItem();
                 }
             }
