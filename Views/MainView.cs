@@ -1,7 +1,8 @@
-﻿using InventoryApp.InventoryApp.dlg;
-using InventoryApp.InventoryApp.Views;
-using System;
+﻿using System;
+using InventoryApp.Entity;
 using System.Windows.Forms;
+using InventoryApp.InventoryApp.dlg;
+using InventoryApp.InventoryApp.Views;
 
 namespace InventoryApp.InventoryApp
 {
@@ -12,6 +13,13 @@ namespace InventoryApp.InventoryApp
         {
             InitializeComponent();
             SwitchForm(new Product());
+
+            timer1 = new Timer
+            {
+                Interval = 1000 // Set the interval to 1000 milliseconds (1 second)
+            };
+            timer1.Tick += timer1_Tick; // Attach the event handler
+            timer1.Start(); // Start the timer
         }
 
         //NAVIGATION CONTROL
@@ -68,6 +76,14 @@ namespace InventoryApp.InventoryApp
             {
                 SwitchForm(new Transaction());
             }
+        }
+
+        // CART COUNTER
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            CartManager cartManager = new CartManager();
+            int cartItemCount = cartManager.GetCartItemCount();
+            radioButton3.Text = "Cart (" + cartItemCount.ToString() + ")";
         }
     }
 }

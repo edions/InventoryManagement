@@ -79,6 +79,25 @@ namespace InventoryApp.Entity
             }
         }
 
+        //Count items on Cart
+        public int GetCartItemCount()
+        {
+            int itemCount = 0;
+
+            using (SqlConnection con = ConnectionManager.GetConnection())
+            {
+                con.Open();
+
+                string query = "SELECT COUNT(*) FROM Cart";
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    itemCount = (int)command.ExecuteScalar();
+                }
+            }
+
+            return itemCount;
+        }
+
         // Load Cart items to ListBox
         public void LoadCartItems(ListBox listBox)
         {
