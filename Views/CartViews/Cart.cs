@@ -1,6 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows.Forms;
-using System;
 using InventoryApp.Entity;
 
 namespace InventoryApp.InventoryApp.Views
