@@ -18,6 +18,7 @@ namespace InventoryApp.Services
             //comboBox.Items.Add("Custom");
         }
 
+        // Calculate Discount in real time
         public void CalculateDiscount(string totalText, object selectedItem, Label labelDiscount, Label labelTotalAfterDiscount)
         {
             int total = Convert.ToInt32(totalText);
@@ -34,6 +35,7 @@ namespace InventoryApp.Services
             labelTotalAfterDiscount.Text = totalAfterDiscount.ToString();
         }
 
+        // Calculate Change in real time
         public void CalculateChange(Label totalLabel, TextBox paidTextBox, Label changeLabel)
         {
             decimal totalAmount = decimal.Parse(totalLabel.Text);
@@ -54,6 +56,7 @@ namespace InventoryApp.Services
             }
         }
 
+        // Process Transaction then save to database
         public bool ProcessTransaction(string totalText, string cashText, object selectedItem, string transactionId)
         {
             int subtotal = Convert.ToInt32(totalText);
