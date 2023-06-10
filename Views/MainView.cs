@@ -15,12 +15,12 @@ namespace InventoryApp.InventoryApp
             SwitchForm(new Product());
 
             // Initialize Cart item counter
-            timer1 = new Timer
+            itemCountTimer = new Timer
             {
                 Interval = 1000
             };
-            timer1.Tick += timer1_Tick;
-            timer1.Start();
+            itemCountTimer.Tick += itemCountTimer_Tick;
+            itemCountTimer.Start();
         }
 
         //NAVIGATION CONTROL
@@ -80,7 +80,7 @@ namespace InventoryApp.InventoryApp
         }
 
         // CART COUNTER
-        private void timer1_Tick(object sender, EventArgs e)
+        private void itemCountTimer_Tick(object sender, EventArgs e)
         {
             CartManager cartManager = new CartManager();
             int cartItemCount = cartManager.GetCartItemCount();
