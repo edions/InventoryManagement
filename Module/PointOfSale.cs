@@ -7,8 +7,6 @@ namespace InventoryApp.Services
 {
     public class PointOfSale
     {
-        private static readonly HashSet<string> generatedIds = new HashSet<string>();
-
         public void InitializeComboBox(ComboBox comboBox)
         {
             comboBox.Items.Add(new ComboBoxItem { Value = 10, Description = "10% off" });
@@ -98,21 +96,6 @@ namespace InventoryApp.Services
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
                 return false;
             }
-        }
-
-        public string GenerateTransactionId()
-        {
-            string uniqueTransactionId;
-
-            do
-            {
-                uniqueTransactionId = Guid.NewGuid().ToString();
-            }
-            while (generatedIds.Contains(uniqueTransactionId));
-
-            generatedIds.Add(uniqueTransactionId);
-
-            return uniqueTransactionId;
         }
     }
 
