@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace InventoryApp.Entity
 {
@@ -9,12 +9,7 @@ namespace InventoryApp.Entity
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
 
-        public ProductManager(SqlConnection connection)
-        {
-            con = connection;
-        }
-
-        //FETCH DATA FROM PRODUCT DATABASE
+        // Fetch data from Product
         public DataTable GetProducts()
         {
             con.Open();
@@ -29,6 +24,7 @@ namespace InventoryApp.Entity
             return dt;
         }
 
+        // Search Product
         public DataTable SearchProducts(string searchTerm)
         {
             con.Open();
@@ -45,6 +41,7 @@ namespace InventoryApp.Entity
             return dt;
         }
 
+        // Fetch data from Category for ComboBox
         public string[] GetCategoryItems()
         {
             con.Open();
@@ -60,6 +57,7 @@ namespace InventoryApp.Entity
             return categoryItems.ToArray();
         }
 
+        // Add new Prodcut
         public void InsertProduct(string name, int price, int stock, int unit, string category)
         {
             con.Open();
@@ -75,6 +73,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
+        // Update Product
         public void UpdateProduct(int id, string name, int price, int stock, int unit, string category)
         {
             con.Open();
@@ -91,6 +90,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
+        // Delete Product
         public void DeleteProduct(int id)
         {
             con.Open();
@@ -102,6 +102,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
+        // Add new Category
         public void InsertCategory(string categoryItem)
         {
             con.Open();

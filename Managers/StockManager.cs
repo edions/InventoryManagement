@@ -8,6 +8,7 @@ namespace InventoryApp.Entity
     {
         readonly SqlConnection con = ConnectionManager.GetConnection();
 
+        // Get Product by Id
         public int GetProductIdByName(string itemName)
         {
             con.Open();
@@ -18,6 +19,7 @@ namespace InventoryApp.Entity
             return productId;
         }
 
+        // Get Stock by Id
         public int GetCurrentStockById(int productId)
         {
             con.Open();
@@ -28,6 +30,7 @@ namespace InventoryApp.Entity
             return currentStock;
         }
 
+        // Update Stock
         public void UpdateStock(int productId, int newStock)
         {
             con.Open();
@@ -40,6 +43,7 @@ namespace InventoryApp.Entity
             con.Close();
         }
 
+        // Insert History
         public void InsertHistory(int productId, int addedStocks)
         {
             con.Open();
@@ -50,6 +54,27 @@ namespace InventoryApp.Entity
             cmd.Parameters.AddWithValue("@addedStocks", addedStocks);
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+
+        // Get Product stock for Quantity
+        public int GetProductStock(int productId)
+        {
+            int stock = 0;
+
+            con.Open();
+            string selectQuery = "SELECT Stock FROM Product WHERE Id = @ProductId";
+            using (SqlCommand selectCommand = new SqlCommand(selectQuery, con))
+            {
+                selectCommand.Parameters.AddWithValue("@ProductId", productId);
+
+                object result = selectCommand.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    stock = Convert.ToInt32(result);
+                }
+            }
+            con.Close();
+            return stock;
         }
     }
 }

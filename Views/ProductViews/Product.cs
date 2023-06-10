@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using InventoryApp.InventoryApp.dlg;
-using InventoryApp.Entity;
 using System.Data;
+using InventoryApp.Entity;
+using System.Windows.Forms;
+using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp
 {
     public partial class Product : Form
     {
-        readonly SqlConnection con = ConnectionManager.GetConnection();
         private readonly ProductManager productManager;
         public Product()
         {
             InitializeComponent();
-            productManager = new ProductManager(con);
+            productManager = new ProductManager();
             dataGridView1.DataSource = productManager.GetProducts();
             AddToCart();
         }
@@ -164,15 +162,11 @@ namespace InventoryApp
                 int stock = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value);
 
                 // Add item to the cart
-                bool itemAdded = false;
-
                 if (stock > 0)
                 {
-                    itemAdded = ProductManager.AddItemToCart(name, price);
+                    bool itemAdded = ProductManager.AddItemToCart(name, price);
                     if (itemAdded)
                     {
-                        // Decrease stock by 1 after adding to cart
-                        dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value = stock - 1;
                         MessageBox.Show("Product added to cart.");
                     }
                 }

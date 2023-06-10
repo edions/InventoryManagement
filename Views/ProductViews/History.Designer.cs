@@ -86,6 +86,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "History";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "History";
             this.groupBox1.ResumeLayout(false);

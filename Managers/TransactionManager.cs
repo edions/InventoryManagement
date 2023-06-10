@@ -1,17 +1,41 @@
-﻿using System.Data.SqlClient;
-using System;
+﻿using System;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace InventoryApp.Managers
 {
     internal class TransactionManager
     {
-        private readonly SqlConnection con;
+        readonly SqlConnection con = ConnectionManager.GetConnection();
 
-        public TransactionManager(SqlConnection connection)
+        // Insert Transaction Items
+        public void InsertTransactionItems(ListBox listBox, string transactionId)
         {
-            con = connection;
+            con.Open();
+            string insertQuery = "INSERT INTO Orders (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
+
+            using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
+            {
+                foreach (var item in listBox.Items)
+                {
+                    string[] parts = item.ToString().Split(new string[] { " x ", " - $" }, StringSplitOptions.None);
+                    string name = parts[1];
+                    decimal price = decimal.Parse(parts[2]);
+                    int quantity = int.Parse(parts[0]);
+
+                    insertCommand.Parameters.Clear();
+                    insertCommand.Parameters.AddWithValue("@TransactionId", transactionId);
+                    insertCommand.Parameters.AddWithValue("@Name", name);
+                    insertCommand.Parameters.AddWithValue("@Price", price);
+                    insertCommand.Parameters.AddWithValue("@Quantity", quantity);
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+
+            con.Close();
         }
 
+        // Saved Transaction
         public void SaveTransactionToDatabase(string transactionId, int subtotal, int cash, double discountPercent, double discountAmount, double change, DateTime currentDate, double total)
         {
             con.Open();
@@ -30,7 +54,7 @@ namespace InventoryApp.Managers
                 command.Parameters.AddWithValue("@TransactionId", transactionId);
                 command.Parameters.AddWithValue("@Subtotal", subtotal);
                 command.Parameters.AddWithValue("@Cash", cash);
-                command.Parameters.AddWithValue("@DiscountPercent", discountPercent);
+                command.Parameters.AddWithValue("@DiscountPercent", Math.Round(discountPercent, 0) + "%");
                 command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
                 command.Parameters.AddWithValue("@Change", change);
                 command.Parameters.AddWithValue("@Total", total);
@@ -41,6 +65,7 @@ namespace InventoryApp.Managers
             con.Close();
         }
 
+        // Delete Cart data after Transactions
         public void DeleteCartData()
         {
             con.Open();

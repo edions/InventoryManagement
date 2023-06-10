@@ -1,14 +1,12 @@
-﻿using InventoryApp.Managers;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System;
 using System.Windows.Forms;
+using InventoryApp.Managers;
+using System.Collections.Generic;
 
 namespace InventoryApp.Services
 {
     public class PointOfSale
     {
-        private readonly SqlConnection con = ConnectionManager.GetConnection();
         private static readonly HashSet<string> generatedIds = new HashSet<string>();
 
         public void InitializeComboBox(ComboBox comboBox)
@@ -17,43 +15,10 @@ namespace InventoryApp.Services
             comboBox.Items.Add(new ComboBoxItem { Value = 15, Description = "15% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 30, Description = "30% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 50, Description = "50% off" });
-            comboBox.Items.Add("Custom");
+            //comboBox.Items.Add("Custom");
         }
 
-        public void LoadCartItems(ListBox listBox)
-        {
-            try
-            {
-                con.Open();
-
-                string selectQuery = "SELECT Name, Price, Quantity FROM Cart";
-
-                using (SqlCommand command = new SqlCommand(selectQuery, con))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        listBox.Items.Clear();
-
-                        while (reader.Read())
-                        {
-                            string name = reader["Name"].ToString();
-                            int price = Convert.ToInt32(reader["Price"]);
-                            int quantity = Convert.ToInt32(reader["Quantity"]);
-
-                            string item = $"{quantity} x {name} - ${price}";
-                            listBox.Items.Add(item);
-                        }
-                    }
-                }
-
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while loading cart items: " + ex.Message);
-            }
-        }
-
+        // Calculate Discount in real time
         public void CalculateDiscount(string totalText, object selectedItem, Label labelDiscount, Label labelTotalAfterDiscount)
         {
             int total = Convert.ToInt32(totalText);
@@ -70,12 +35,12 @@ namespace InventoryApp.Services
             labelTotalAfterDiscount.Text = totalAfterDiscount.ToString();
         }
 
+        // Calculate Change in real time
         public void CalculateChange(Label totalLabel, TextBox paidTextBox, Label changeLabel)
         {
             decimal totalAmount = decimal.Parse(totalLabel.Text);
-            decimal paidAmount;
 
-            if (decimal.TryParse(paidTextBox.Text, out paidAmount))
+            if (decimal.TryParse(paidTextBox.Text, out decimal paidAmount))
             {
                 decimal change = paidAmount - totalAmount;
                 if (change < 0)
@@ -91,6 +56,7 @@ namespace InventoryApp.Services
             }
         }
 
+        // Process Transaction then save to database
         public bool ProcessTransaction(string totalText, string cashText, object selectedItem, string transactionId)
         {
             int subtotal = Convert.ToInt32(totalText);
@@ -112,15 +78,13 @@ namespace InventoryApp.Services
             if (cash < total)
             {
                 MessageBox.Show("Not enough cash to complete the transaction.");
-                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction cannot be completed
                 return false;
             }
 
             double change = cash - total;
             DateTime currentDate = DateTime.Now;
 
-            SqlConnection con = ConnectionManager.GetConnection(); // Get the connection object
-            TransactionManager transactionManager = new TransactionManager(con);
+            TransactionManager transactionManager = new TransactionManager();
             try
             {
                 transactionManager.SaveTransactionToDatabase(transactionId, subtotal, cash, discountPercent, discountAmount, change, currentDate, total);
@@ -132,35 +96,8 @@ namespace InventoryApp.Services
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
-                totalAfterDiscount = 0; // Assign 0 to totalAfterDiscount since the transaction could not be saved
                 return false;
             }
-        }
-
-        public void InsertTransactionItems(ListBox listBox, string transactionId)
-        {
-            con.Open();
-            string insertQuery = "INSERT INTO Orders (TransactionId, Name, Price, Quantity) VALUES (@TransactionId, @Name, @Price, @Quantity)";
-
-            using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
-            {
-                foreach (var item in listBox.Items)
-                {
-                    string[] parts = item.ToString().Split(new string[] { " x ", " - $" }, StringSplitOptions.None);
-                    string name = parts[1];
-                    decimal price = decimal.Parse(parts[2]);
-                    int quantity = int.Parse(parts[0]);
-
-                    insertCommand.Parameters.Clear();
-                    insertCommand.Parameters.AddWithValue("@TransactionId", transactionId);
-                    insertCommand.Parameters.AddWithValue("@Name", name);
-                    insertCommand.Parameters.AddWithValue("@Price", price);
-                    insertCommand.Parameters.AddWithValue("@Quantity", quantity);
-                    insertCommand.ExecuteNonQuery();
-                }
-            }
-
-            con.Close();
         }
 
         public string GenerateTransactionId()

@@ -1,6 +1,6 @@
+using System;
 using System.Data;
 using System.Windows.Forms;
-using System;
 using InventoryApp.Entity;
 
 namespace InventoryApp.InventoryApp.Views
@@ -23,7 +23,7 @@ namespace InventoryApp.InventoryApp.Views
         }
 
         //CHECKOUT BUTTON - Cart
-        private void button1_Click(object sender, System.EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             decimal totalPrice = cartManager.GetTotalPrice();
             if (totalPrice > 0)
@@ -45,10 +45,10 @@ namespace InventoryApp.InventoryApp.Views
         {
             if (dataGridView1.Rows.Count > 0 && dataGridView1.SelectedRows.Count > 0)
             {
-                int id = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
                 int quantity = (int)dataGridView1.SelectedRows[0].Cells["Quantity"].Value;
+                int productId = (int)dataGridView1.SelectedRows[0].Cells["ProductId"].Value;
 
-                Quantity dlg = new Quantity(id, quantity);
+                Quantity dlg = new Quantity(quantity, productId);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     DisplayCartItem();
@@ -62,14 +62,15 @@ namespace InventoryApp.InventoryApp.Views
         }
 
         //REMOVE BUTTON - Cart
-        private void button2_Click(object sender, System.EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                int id = (int)dataGridView1.SelectedRows[0].Cells["ID"].Value;
+                int productId = (int)dataGridView1.SelectedRows[0].Cells["ProductId"].Value;
+
                 if (MessageBox.Show("Are you sure want to remove this item from your cart?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    cartManager.RemoveCartItem(id);
+                    cartManager.RemoveCartItem(productId);
                     DisplayCartItem();
                 }
             }
