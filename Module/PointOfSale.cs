@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using InventoryApp.Managers;
-using System.Collections.Generic;
 
 namespace InventoryApp.Services
 {
