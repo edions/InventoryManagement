@@ -42,9 +42,9 @@ CREATE TABLE [dbo].[Transaction]
     [Subtotal] VARCHAR(50) NULL, 
     [Cash] VARCHAR(50) NULL, 
     [DiscountPercent] VARCHAR(50) NULL, 
-    [DiscountAmount] DECIMAL(18, 2) NULL, 
+    [DiscountAmount] VARCHAR(50) NULL, 
     [Total] VARCHAR(50) NULL, 
-    [Change] DECIMAL(18, 2) NULL, 
+    [Change] VARCHAR(50) NULL, 
     [TransactionId] VARCHAR(MAX) NULL,
 );
 
@@ -54,6 +54,6 @@ CREATE TABLE [dbo].[Orders]
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [TransactionId] VARCHAR(MAX) NULL, 
     [Name] VARCHAR(50) NULL, 
-    [Price] INT NULL, 
+    [Price] VARCHAR(50) NULL, 
     [Quantity] INT NULL
 );

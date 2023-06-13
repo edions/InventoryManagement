@@ -26,7 +26,7 @@ namespace InventoryApp.Managers
                     insertCommand.Parameters.Clear();
                     insertCommand.Parameters.AddWithValue("@TransactionId", transactionId);
                     insertCommand.Parameters.AddWithValue("@Name", name);
-                    insertCommand.Parameters.AddWithValue("@Price", price);
+                    insertCommand.Parameters.AddWithValue("@Price", "$" + price.ToString());
                     insertCommand.Parameters.AddWithValue("@Quantity", quantity);
                     insertCommand.ExecuteNonQuery();
                 }
@@ -52,12 +52,12 @@ namespace InventoryApp.Managers
             using (SqlCommand command = new SqlCommand(insertQuery, con))
             {
                 command.Parameters.AddWithValue("@TransactionId", transactionId);
-                command.Parameters.AddWithValue("@Subtotal", subtotal);
-                command.Parameters.AddWithValue("@Cash", cash);
+                command.Parameters.AddWithValue("@Subtotal", "$" + subtotal.ToString());
+                command.Parameters.AddWithValue("@Cash", "$" + cash.ToString());
                 command.Parameters.AddWithValue("@DiscountPercent", Math.Round(discountPercent, 0) + "%");
-                command.Parameters.AddWithValue("@DiscountAmount", discountAmount);
-                command.Parameters.AddWithValue("@Change", change);
-                command.Parameters.AddWithValue("@Total", total);
+                command.Parameters.AddWithValue("@DiscountAmount", "$" + discountAmount.ToString());
+                command.Parameters.AddWithValue("@Change", "$" + change.ToString());
+                command.Parameters.AddWithValue("@Total", "$" + total.ToString());
                 command.Parameters.AddWithValue("@Date", currentDate);
                 command.ExecuteNonQuery();
             }
