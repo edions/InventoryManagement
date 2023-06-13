@@ -18,7 +18,7 @@ namespace InventoryApp.InventoryApp.dlg
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT Date, Total, DiscountPercent, DiscountAmount, Total, Change, TransactionId FROM [Transaction] ", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT Date, Subtotal, DiscountPercent, DiscountAmount, Total, Change, TransactionId FROM [Transaction] ", con))
                 {
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
