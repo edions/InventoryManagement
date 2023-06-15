@@ -1,8 +1,7 @@
 ﻿using System;
 using InventoryApp.Managers;
-using InventoryApp.Services;
 using System.Windows.Forms;
-using InventoryApp.Module;
+using InventoryApp.Modules;
 
 namespace InventoryApp
 {

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using InventoryApp.Managers;
 
-namespace InventoryApp.Services
+namespace InventoryApp.Modules
 {
     public class PointOfSale
     {
