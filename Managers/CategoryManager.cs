@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace InventoryApp.Entity
+namespace InventoryApp.Managers
 {
     public class CategoryManager
     {

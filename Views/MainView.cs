@@ -1,5 +1,5 @@
 ﻿using System;
-using InventoryApp.Entity;
+using InventoryApp.Managers;
 using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
 using InventoryApp.InventoryApp.Views;

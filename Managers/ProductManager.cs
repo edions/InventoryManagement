@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
-namespace InventoryApp.Entity
+namespace InventoryApp.Managers
 {
     public class ProductManager
     {
