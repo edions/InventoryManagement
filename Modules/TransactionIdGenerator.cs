@@ -9,11 +9,11 @@ namespace InventoryApp.Modules
 
         public int GenerateTransactionId()
         {
-            string uniqueTransactionId;
+            int uniqueTransactionId;
 
             do
             {
-                uniqueTransactionId = Guid.NewGuid().ToString();
+                uniqueTransactionId = GenerateUniqueId();
             }
             while (generatedIds.Contains(uniqueTransactionId));
 
