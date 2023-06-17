@@ -5,9 +5,9 @@ namespace InventoryApp.Modules
 {
     class TransactionIdGenerator
     {
-        private readonly HashSet<string> generatedIds = new HashSet<string>();
+        private readonly HashSet<int> generatedIds = new HashSet<int>();
 
-        public string GenerateTransactionId()
+        public int GenerateTransactionId()
         {
             string uniqueTransactionId;
 
