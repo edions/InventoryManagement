@@ -5,15 +5,15 @@ namespace InventoryApp.Modules
 {
     class TransactionIdGenerator
     {
-        private readonly HashSet<int> generatedIds = new HashSet<int>();
+        private readonly HashSet<string> generatedIds = new HashSet<string>();
 
-        public int GenerateTransactionId()
+        public string GenerateTransactionId()
         {
-            int uniqueTransactionId;
+            string uniqueTransactionId;
 
             do
             {
-                uniqueTransactionId = GenerateUniqueId();
+                uniqueTransactionId = Guid.NewGuid().ToString();
             }
             while (generatedIds.Contains(uniqueTransactionId));
 
