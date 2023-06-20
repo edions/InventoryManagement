@@ -17,7 +17,7 @@ namespace InventoryApp.InventoryApp
             // Initialize Cart item counter
             itemCountTimer = new Timer
             {
-                Interval = 1000
+                Interval = 3000
             };
             itemCountTimer.Tick += itemCountTimer_Tick;
             itemCountTimer.Start();
