@@ -1,4 +1,4 @@
-﻿using InventoryApp.InventoryApp;
+﻿using InventoryApp.Views;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +14,7 @@ namespace InventoryApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainView());
+            Application.Run(new UserAuth());
         }
     }
 }

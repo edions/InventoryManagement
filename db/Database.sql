@@ -58,3 +58,13 @@ CREATE TABLE [dbo].[Orders]
     [Price] VARCHAR(50) NULL, 
     [Quantity] INT NULL
 );
+
+-- Creates a table to store user information
+CREATE TABLE [dbo].[Users]
+(
+	[Uid] INT NOT NULL PRIMARY KEY IDENTITY (1000, 1), 
+    [Username] VARCHAR(50) NULL, 
+    [Password] VARCHAR(50) NULL, 
+    [Email] VARCHAR(50) NULL,
+);
+
