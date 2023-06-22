@@ -1,5 +1,5 @@
 ﻿using System;
-using InventoryApp.Entity;
+using InventoryApp.Managers;
 using System.Windows.Forms;
 
 namespace InventoryApp

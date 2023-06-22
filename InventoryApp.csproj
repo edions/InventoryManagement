@@ -66,7 +66,8 @@
     <Compile Include="Managers\ProductManager.cs" />
     <Compile Include="Managers\StockManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
-    <Compile Include="Module\PointOfSale.cs" />
+    <Compile Include="Modules\PointOfSale.cs" />
+    <Compile Include="Modules\TransactionIdGenerator.cs" />
     <Compile Include="Views\CartViews\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +143,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\UserAuth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserAuth.Designer.cs">
+      <DependentUpon>UserAuth.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\CartViews\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +194,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\UserAuth.resx">
+      <DependentUpon>UserAuth.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

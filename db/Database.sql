@@ -31,7 +31,8 @@ CREATE TABLE [dbo].[Cart]
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [Name] VARCHAR(50) NULL, 
     [Price] INT NULL, 
-    [Quantity] INT NULL
+    [Quantity] INT NULL,
+    [ProductId] INT NULL
 );
 
 -- Table to store transaction information
@@ -39,12 +40,12 @@ CREATE TABLE [dbo].[Transaction]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [Date] DATETIME NULL, 
-    [Subtotal] INT NULL, 
-    [Cash] INT NULL, 
+    [Subtotal] VARCHAR(50) NULL, 
+    [Cash] VARCHAR(50) NULL, 
     [DiscountPercent] VARCHAR(50) NULL, 
-    [DiscountAmount] DECIMAL(18, 2) NULL, 
-    [Total] INT NULL, 
-    [Change] DECIMAL(18, 2) NULL, 
+    [DiscountAmount] VARCHAR(50) NULL, 
+    [Total] VARCHAR(50) NULL, 
+    [Change] VARCHAR(50) NULL, 
     [TransactionId] VARCHAR(MAX) NULL,
 );
 
@@ -54,6 +55,16 @@ CREATE TABLE [dbo].[Orders]
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [TransactionId] VARCHAR(MAX) NULL, 
     [Name] VARCHAR(50) NULL, 
-    [Price] INT NULL, 
+    [Price] VARCHAR(50) NULL, 
     [Quantity] INT NULL
 );
+
+-- Creates a table to store user information
+CREATE TABLE [dbo].[Users]
+(
+	[Uid] INT NOT NULL PRIMARY KEY IDENTITY (1000, 1), 
+    [Username] VARCHAR(50) NULL, 
+    [Password] VARCHAR(50) NULL, 
+    [Email] VARCHAR(50) NULL,
+);
+

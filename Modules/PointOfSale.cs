@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 using InventoryApp.Managers;
-using System.Collections.Generic;
 
-namespace InventoryApp.Services
+namespace InventoryApp.Modules
 {
     public class PointOfSale
     {
-        private static readonly HashSet<string> generatedIds = new HashSet<string>();
-
         public void InitializeComboBox(ComboBox comboBox)
         {
             comboBox.Items.Add(new ComboBoxItem { Value = 10, Description = "10% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 15, Description = "15% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 30, Description = "30% off" });
             comboBox.Items.Add(new ComboBoxItem { Value = 50, Description = "50% off" });
-            //comboBox.Items.Add("Custom");
         }
 
         // Calculate Discount in real time
@@ -98,21 +94,6 @@ namespace InventoryApp.Services
                 MessageBox.Show("An error occurred while saving the transaction: " + ex.Message);
                 return false;
             }
-        }
-
-        public string GenerateTransactionId()
-        {
-            string uniqueTransactionId;
-
-            do
-            {
-                uniqueTransactionId = Guid.NewGuid().ToString();
-            }
-            while (generatedIds.Contains(uniqueTransactionId));
-
-            generatedIds.Add(uniqueTransactionId);
-
-            return uniqueTransactionId;
         }
     }
 

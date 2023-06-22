@@ -1,8 +1,7 @@
 using System;
-using InventoryApp.Entity;
 using InventoryApp.Managers;
-using InventoryApp.Services;
 using System.Windows.Forms;
+using InventoryApp.Modules;
 
 namespace InventoryApp
 {
@@ -60,7 +59,9 @@ namespace InventoryApp
         private void button1_Click(object sender, EventArgs e)
         {
             TransactionManager transactionManager = new TransactionManager();
-            string transactionId = pointOfSale.GenerateTransactionId();
+            TransactionIdGenerator transactionIdGenerator = new TransactionIdGenerator();
+
+            string transactionId = transactionIdGenerator.GenerateTransactionId();
 
             if (pointOfSale.ProcessTransaction(label3.Text, textBox2.Text, comboBox1.SelectedItem, transactionId))
             {
