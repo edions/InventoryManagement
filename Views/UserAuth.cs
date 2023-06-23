@@ -7,6 +7,7 @@ namespace InventoryApp.Views
 {
     public partial class UserAuth : Form
     {
+        private bool isRegisterMode = false;
         public UserAuth()
         {
             InitializeComponent();
@@ -110,8 +111,6 @@ namespace InventoryApp.Views
             }
         }
 
-
-        private bool isRegisterMode = false;
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             isRegisterMode = !isRegisterMode; // Toggle the mode
