@@ -39,15 +39,12 @@ namespace InventoryApp.Views
 
             if (isRegisterMode)
             {
-                // Perform registration logic
                 RegisterUser(username, password);
             }
             else
             {
-                // Perform login logic
                 if (ValidateUserCredentials(username, password))
                 {
-                    // Navigate to another form or perform any desired actions on successful login
                     MainView anotherForm = new MainView();
                     anotherForm.Show();
                     this.Hide();
