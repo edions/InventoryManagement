@@ -13,6 +13,7 @@ namespace InventoryApp.Views
             InitializeComponent();
         }
 
+        //Validate Users Credentials
         private bool ValidateUserCredentials(string username, string password)
         {
             string connectionString = ConnectionManager.GetConnection().ConnectionString;
@@ -32,6 +33,7 @@ namespace InventoryApp.Views
             }
         }
 
+        // Login or Register Button
         private void button1_Click(object sender, EventArgs e)
         {
             string username = textBox1.Text;
@@ -56,6 +58,7 @@ namespace InventoryApp.Views
             }
         }
 
+        // Register new user
         private void RegisterUser(string username, string password)
         {
             // Check if the username already exists in the database
@@ -90,6 +93,7 @@ namespace InventoryApp.Views
             }
         }
 
+        // Check if user name already exists
         private bool IsUsernameExists(string username)
         {
             string connectionString = ConnectionManager.GetConnection().ConnectionString;
@@ -108,6 +112,7 @@ namespace InventoryApp.Views
             }
         }
 
+        // Toggle label mode
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             isRegisterMode = !isRegisterMode; // Toggle the mode
