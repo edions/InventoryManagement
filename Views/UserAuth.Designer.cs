@@ -129,6 +129,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UserAuth";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserAuth";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
