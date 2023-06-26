@@ -48,9 +48,10 @@ namespace InventoryApp.Views
             {
                 if (ValidateUserCredentials(username, password))
                 {
-                    MainView anotherForm = new MainView();
-                    anotherForm.Show();
-                    this.Hide();
+                    MainView mainpage = new MainView();
+                    mainpage.FormClosed += (s, args) => this.Close();
+                    mainpage.Show();
+                    Hide();
                 }
                 else
                 {
