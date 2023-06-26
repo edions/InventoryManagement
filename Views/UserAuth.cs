@@ -2,6 +2,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace InventoryApp.Views
 {
@@ -136,6 +137,19 @@ namespace InventoryApp.Views
                 textBox2.Enabled = true;
                 linkLabel1.Text = "REGISTER";
                 button1.Text = "LOGIN";
+            }
+        }
+
+        // Show password checkbox
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox2.PasswordChar = '\0';
+            }
+            else
+            {
+                textBox2.PasswordChar = '*';
             }
         }
     }
