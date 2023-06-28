@@ -65,8 +65,10 @@ namespace InventoryApp.Views
                 textBox2.Text = string.Empty;
                 textBox1.Enabled = true;
                 textBox2.Enabled = true;
+                Text = "Signup";
                 linkLabel1.Text = "LOGIN";
                 button1.Text = "REGISTER";
+                label4.Text = "Create new account";
             }
             else
             {
@@ -75,8 +77,10 @@ namespace InventoryApp.Views
                 textBox2.Text = string.Empty;
                 textBox1.Enabled = true;
                 textBox2.Enabled = true;
+                Text = "Login";
                 linkLabel1.Text = "REGISTER";
                 button1.Text = "LOGIN";
+                label4.Text = "Login to your account";
             }
         }
 
