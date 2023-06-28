@@ -14,7 +14,7 @@ namespace InventoryApp.Managers
             {
                 connection.Open();
 
-                string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password";
+                string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND Password = @Password";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
                 command.Parameters.AddWithValue("@Password", password);
@@ -42,7 +42,7 @@ namespace InventoryApp.Managers
             {
                 connection.Open();
 
-                string query = "INSERT INTO Users (Username, Password) VALUES (@Username, @Password)";
+                string query = "INSERT INTO Account (Username, Password) VALUES (@Username, @Password)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
                 command.Parameters.AddWithValue("@Password", password);
@@ -69,7 +69,7 @@ namespace InventoryApp.Managers
             {
                 connection.Open();
 
-                string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
+                string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
 
