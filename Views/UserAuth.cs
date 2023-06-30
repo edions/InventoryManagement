@@ -8,17 +8,17 @@ namespace InventoryApp.Views
     public partial class UserAuth : Form
     {
         private bool isRegisterMode = false;
-        private readonly AccountManager accountManger;
+        private readonly AccountManager accountManager;
         public UserAuth()
         {
             InitializeComponent();
-            accountManger = new AccountManager();
+            accountManager = new AccountManager();
         }
 
         // Validate Users Credentials
         private bool ValidateUserCredentials(string username, string password)
         {
-            return accountManger.ValidateUserCredentials(username, password);
+            return accountManager.ValidateUserCredentials(username, password);
         }
 
         // Process Login Form
@@ -75,7 +75,7 @@ namespace InventoryApp.Views
         // Register new user
         private void RegisterUser(string username, string password)
         {
-            accountManger.RegisterUser(username, password);
+            accountManager.RegisterUser(username, password);
         }
 
         // Toggle label mode
