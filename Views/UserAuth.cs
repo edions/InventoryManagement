@@ -24,25 +24,44 @@ namespace InventoryApp.Views
         // Login or Register Button
         private void button1_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+
             string username = textBox1.Text;
             string password = textBox2.Text;
 
-            if (isRegisterMode)
+            bool isValid = true;
+
+            if (string.IsNullOrEmpty(username))
             {
-                RegisterUser(username, password);
+                errorProvider1.SetError(textBox1, "Please enter a username.");
+                isValid = false;
             }
-            else
+
+            if (string.IsNullOrEmpty(password))
             {
-                if (ValidateUserCredentials(username, password))
+                errorProvider1.SetError(textBox2, "Please enter a password.");
+                isValid = false;
+            }
+
+            if (isValid)
+            {
+                if (isRegisterMode)
                 {
-                    MainView mainpage = new MainView();
-                    mainpage.FormClosed += (s, args) => this.Close();
-                    mainpage.Show();
-                    Hide();
+                    RegisterUser(username, password);
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password. Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ValidateUserCredentials(username, password))
+                    {
+                        MainView mainpage = new MainView();
+                        mainpage.FormClosed += (s, args) => this.Close();
+                        mainpage.Show();
+                        Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password. Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -61,6 +80,7 @@ namespace InventoryApp.Views
             if (isRegisterMode)
             {
                 // Switch to register mode
+                errorProvider1.Clear();
                 textBox1.Text = string.Empty;
                 textBox2.Text = string.Empty;
                 textBox1.Enabled = true;
@@ -71,6 +91,7 @@ namespace InventoryApp.Views
             else
             {
                 // Switch to login mode
+                errorProvider1.Clear();
                 textBox1.Text = string.Empty;
                 textBox2.Text = string.Empty;
                 textBox1.Enabled = true;
