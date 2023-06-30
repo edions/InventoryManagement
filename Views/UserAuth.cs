@@ -66,18 +66,6 @@ namespace InventoryApp.Views
             }
         }
 
-        // Login or Register Button
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ProcessLoginForm();
-        }
-
-        // Register new user
-        private void RegisterUser(string username, string password)
-        {
-            accountManager.RegisterUser(username, password);
-        }
-
         // Toggle label mode
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -105,6 +93,18 @@ namespace InventoryApp.Views
                 linkLabel1.Text = "REGISTER";
                 button1.Text = "LOGIN";
             }
+        }
+
+        // Login or Register Button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProcessLoginForm();
+        }
+
+        // Register new user
+        private void RegisterUser(string username, string password)
+        {
+            accountManager.RegisterUser(username, password);
         }
 
         // Show password checkbox
