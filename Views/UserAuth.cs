@@ -120,6 +120,7 @@ namespace InventoryApp.Views
             }
         }
 
+        // Event handler for key press event in textBox1
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!string.IsNullOrEmpty(textBox1.Text))
@@ -132,6 +133,7 @@ namespace InventoryApp.Views
             }
         }
 
+        // Event handler for key press event in textBox2
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!string.IsNullOrEmpty(textBox2.Text))
