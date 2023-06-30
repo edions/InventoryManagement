@@ -1,7 +1,7 @@
 ﻿using InventoryApp.InventoryApp;
 using InventoryApp.Managers;
-using System;
 using System.Windows.Forms;
+using System;
 
 namespace InventoryApp.Views
 {
