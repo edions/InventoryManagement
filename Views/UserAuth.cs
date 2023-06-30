@@ -15,14 +15,14 @@ namespace InventoryApp.Views
             accountManger = new AccountManager();
         }
 
-        //Validate Users Credentials
+        // Validate Users Credentials
         private bool ValidateUserCredentials(string username, string password)
         {
             return accountManger.ValidateUserCredentials(username, password);
         }
 
-        // Login or Register Button
-        private void button1_Click(object sender, EventArgs e)
+        // Process Login Form
+        private void ProcessLoginForm()
         {
             errorProvider1.Clear();
 
@@ -64,6 +64,12 @@ namespace InventoryApp.Views
                     }
                 }
             }
+        }
+
+        // Login or Register Button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProcessLoginForm();
         }
 
         // Register new user
@@ -111,6 +117,30 @@ namespace InventoryApp.Views
             else
             {
                 textBox2.PasswordChar = '*';
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    textBox2.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox2.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    ProcessLoginForm();
+                    e.Handled = true;
+                }
             }
         }
     }
