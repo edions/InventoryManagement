@@ -125,7 +125,7 @@ namespace InventoryApp
             else
             {
                 errorProvider1.SetError(textBox1, "");
-                errorProvider1.Clear();
+                //errorProvider1.Clear();
             }
         }
 
@@ -138,7 +138,7 @@ namespace InventoryApp
             else
             {
                 errorProvider1.SetError(textBox3, "");
-                errorProvider1.Clear();
+                //errorProvider1.Clear();
             }
         }
 
@@ -151,7 +151,7 @@ namespace InventoryApp
             else
             {
                 errorProvider1.SetError(textBox2, "");
-                errorProvider1.Clear();
+                //errorProvider1.Clear();
             }
         }
 
@@ -164,7 +164,7 @@ namespace InventoryApp
             else
             {
                 errorProvider1.SetError(textBox4, "");
-                errorProvider1.Clear();
+                //errorProvider1.Clear();
             }
         }
 
@@ -177,7 +177,7 @@ namespace InventoryApp
             else
             {
                 errorProvider1.SetError(comboBox1, "");
-                errorProvider1.Clear();
+                //errorProvider1.Clear();
             }
         }
         #endregion
