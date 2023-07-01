@@ -8,6 +8,7 @@ namespace InventoryApp
     {
         private readonly ProductManager productManager;
         private readonly int itemId; // Used for Edit mode
+        private readonly bool isValid = false;
 
         public ProductDialog(ProductManager manager)
         {
@@ -66,10 +67,16 @@ namespace InventoryApp
         // CANCEL BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
+            errorProvider1.SetError(textBox1, "");
+            errorProvider1.SetError(textBox2, "");
+            errorProvider1.SetError(textBox3, "");
+            errorProvider1.SetError(textBox4, "");
+            errorProvider1.SetError(comboBox1, "");
+            errorProvider1.Clear();
             Close();
         }
 
-        //TextBox key press event
+        //Textbox key press event
         #region
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -104,6 +111,74 @@ namespace InventoryApp
                     textBox4.Focus();
                     e.Handled = true;
                 }
+            }
+        }
+        #endregion
+
+        //Texbox validations
+        #region
+        private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                errorProvider1.SetError(textBox1, "Product name is required.");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox1, "");
+                errorProvider1.Clear();
+            }
+        }
+
+        private void textBox3_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox3.Text))
+            {
+                errorProvider1.SetError(textBox3, "Product name is required.");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox3, "");
+                errorProvider1.Clear();
+            }
+        }
+
+        private void textBox2_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox2.Text))
+            {
+                errorProvider1.SetError(textBox2, "Product name is required.");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox2, "");
+                errorProvider1.Clear();
+            }
+        }
+
+        private void textBox4_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox4.Text))
+            {
+                errorProvider1.SetError(textBox4, "Product name is required.");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox4, "");
+                errorProvider1.Clear();
+            }
+        }
+
+        private void comboBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(comboBox1.Text))
+            {
+                errorProvider1.SetError(comboBox1, "Product name is required.");
+            }
+            else
+            {
+                errorProvider1.SetError(comboBox1, "");
+                errorProvider1.Clear();
             }
         }
         #endregion
