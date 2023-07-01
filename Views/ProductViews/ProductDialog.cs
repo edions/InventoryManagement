@@ -133,7 +133,7 @@ namespace InventoryApp
         {
             if (string.IsNullOrEmpty(textBox3.Text))
             {
-                errorProvider1.SetError(textBox3, "Product name is required.");
+                errorProvider1.SetError(textBox3, "Price is required.");
             }
             else
             {
@@ -146,7 +146,7 @@ namespace InventoryApp
         {
             if (string.IsNullOrEmpty(textBox2.Text))
             {
-                errorProvider1.SetError(textBox2, "Product name is required.");
+                errorProvider1.SetError(textBox2, "Stock is required.");
             }
             else
             {
@@ -159,7 +159,7 @@ namespace InventoryApp
         {
             if (string.IsNullOrEmpty(textBox4.Text))
             {
-                errorProvider1.SetError(textBox4, "Product name is required.");
+                errorProvider1.SetError(textBox4, "Unit is required.");
             }
             else
             {
@@ -172,7 +172,7 @@ namespace InventoryApp
         {
             if (string.IsNullOrEmpty(comboBox1.Text))
             {
-                errorProvider1.SetError(comboBox1, "Product name is required.");
+                errorProvider1.SetError(comboBox1, "Category is required.");
             }
             else
             {
