@@ -120,6 +120,8 @@ namespace InventoryApp.Views
             }
         }
 
+        //TextBox key press event
+        #region
         // Event handler for key press event in textBox1
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -145,5 +147,6 @@ namespace InventoryApp.Views
                 }
             }
         }
+        #endregion
     }
 }

@@ -68,5 +68,44 @@ namespace InventoryApp
         {
             Close();
         }
+
+        //TextBox key press event
+        #region
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    textBox2.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox2.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    textBox3.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox3.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    textBox4.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+        #endregion
     }
 }
