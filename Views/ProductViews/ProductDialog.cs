@@ -8,7 +8,6 @@ namespace InventoryApp
     {
         private readonly ProductManager productManager;
         private readonly int itemId; // Used for Edit mode
-        private readonly bool isValid = false;
 
         public ProductDialog(ProductManager manager)
         {
