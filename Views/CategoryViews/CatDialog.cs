@@ -1,6 +1,7 @@
 ﻿using System;
 using InventoryApp.Managers;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace InventoryApp
 {
@@ -31,17 +32,24 @@ namespace InventoryApp
         // SAVE or UPDATE BUTTON - Cat
         private void button1_Click(object sender, EventArgs e)
         {
-            if (itemId == 0) // Create mode
+            if(!string.IsNullOrEmpty(textBox2.Text))
             {
-                categoryManager.AddCategory(textBox2.Text);
-            }
-            else // Edit mode
-            {
-                categoryManager.UpdateCategory(itemId, textBox2.Text);
-            }
+                if (itemId == 0) // Create mode
+                {
+                    categoryManager.AddCategory(textBox2.Text);
+                }
+                else // Edit mode
+                {
+                    categoryManager.UpdateCategory(itemId, textBox2.Text);
+                }
 
-            DialogResult = DialogResult.OK;
-            Close();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                errorProvider1.SetError(textBox2, "Category name is required.");
+            }
         }
 
         // CANCEL BUTTON - Cat
