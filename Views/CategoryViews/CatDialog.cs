@@ -29,10 +29,10 @@ namespace InventoryApp
             Text = "Edit Category";
         }
 
-        // SAVE or UPDATE BUTTON - Cat
-        private void button1_Click(object sender, EventArgs e)
+        // Save Category and Validate
+        private void SaveCategory()
         {
-            if(!string.IsNullOrEmpty(textBox2.Text))
+            if (!string.IsNullOrEmpty(textBox2.Text))
             {
                 if (itemId == 0) // Create mode
                 {
@@ -49,6 +49,22 @@ namespace InventoryApp
             else
             {
                 errorProvider1.SetError(textBox2, "Category name is required.");
+            }
+        }
+
+        // SAVE or UPDATE BUTTON - Cat
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveCategory();
+        }
+
+        // [ ENTER ] Keypress to save
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                SaveCategory();
+                e.Handled = true;
             }
         }
 
