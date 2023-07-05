@@ -1,7 +1,6 @@
 ﻿using System;
 using InventoryApp.Managers;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace InventoryApp
 {
