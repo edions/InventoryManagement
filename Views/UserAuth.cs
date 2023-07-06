@@ -1,5 +1,6 @@
 ﻿using InventoryApp.InventoryApp;
 using InventoryApp.Managers;
+using InventoryApp.Modules;
 using System.Windows.Forms;
 using System;
 
@@ -16,7 +17,7 @@ namespace InventoryApp.Views
         }
 
         // Validate Users Credentials
-        private bool ValidateUserCredentials(string username, string password)
+        private int ValidateUserCredentials(string username, string password)
         {
             return accountManager.ValidateUserCredentials(username, password);
         }
@@ -51,8 +52,10 @@ namespace InventoryApp.Views
                 }
                 else
                 {
-                    if (ValidateUserCredentials(username, password))
+                    int uid = ValidateUserCredentials(username, password);
+                    if (uid != 0)
                     {
+                        UserSession.SessionUID = uid;
                         MainView mainpage = new MainView();
                         mainpage.FormClosed += (s, args) => this.Close();
                         mainpage.Show();

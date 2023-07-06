@@ -6,7 +6,7 @@ namespace InventoryApp.Managers
     class AccountManager
     {
         //Validate Users Credentials
-        public bool ValidateUserCredentials(string username, string password)
+        public int ValidateUserCredentials(string username, string password)
         {
             string connectionString = ConnectionManager.GetConnection().ConnectionString;
 
@@ -14,14 +14,15 @@ namespace InventoryApp.Managers
             {
                 connection.Open();
 
-                string query = "SELECT COUNT(*) FROM Account WHERE Username = @Username AND Password = @Password";
+                string query = "SELECT Uid FROM Account WHERE Username = @Username AND Password = @Password";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", username);
                 command.Parameters.AddWithValue("@Password", password);
 
-                int count = (int)command.ExecuteScalar();
+                object result = command.ExecuteScalar();
+                int uid = result != null ? (int)result : 0;
 
-                return (count > 0);
+                return uid;
             }
         }
 

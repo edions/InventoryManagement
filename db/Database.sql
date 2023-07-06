@@ -32,7 +32,8 @@ CREATE TABLE [dbo].[Cart]
     [Name] VARCHAR(50) NULL, 
     [Price] INT NULL, 
     [Quantity] INT NULL,
-    [ProductId] INT NULL
+    [ProductId] INT NULL,
+    [Uid] INT NULL
 );
 
 -- Table to store transaction information
@@ -47,6 +48,7 @@ CREATE TABLE [dbo].[Transaction]
     [Total] VARCHAR(50) NULL, 
     [Change] VARCHAR(50) NULL, 
     [TransactionId] VARCHAR(MAX) NULL,
+    [Uid] INT NULL
 );
 
 -- Table to store ordered items in a transaction
