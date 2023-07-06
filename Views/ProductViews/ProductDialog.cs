@@ -41,8 +41,8 @@ namespace InventoryApp
             Text = "Edit Product";
         }
 
-        // SAVE or UPDATE BUTTON
-        private void button1_Click(object sender, EventArgs e)
+        // Save Product
+        private void SaveProduct()
         {
             string selectedItem = comboBox1.Text.Trim();
             if (!string.IsNullOrEmpty(selectedItem) && comboBox1.SelectedIndex == -1)
@@ -61,6 +61,12 @@ namespace InventoryApp
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        // SAVE or UPDATE BUTTON
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveProduct();
         }
 
         // CANCEL BUTTON
@@ -108,6 +114,30 @@ namespace InventoryApp
                 if (e.KeyChar == (char)Keys.Enter)
                 {
                     textBox4.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox4.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    comboBox1.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(comboBox1.Text))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    SaveProduct();
                     e.Handled = true;
                 }
             }
