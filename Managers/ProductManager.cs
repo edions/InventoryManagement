@@ -150,12 +150,16 @@ namespace InventoryApp.Managers
                         reader.Close();
 
                         // Item does not exist in the cart, insert a new row
-                        string insertQuery = "INSERT INTO Cart (ProductId, Name, Price, Quantity) VALUES ((SELECT Id FROM Product WHERE Name = @Name), @Name, @Price, 1)";
+                        string insertQuery = "INSERT INTO Cart (ProductId, Uid, Name, Price, Quantity) " +
+                                             "VALUES ((SELECT Id FROM Product WHERE Name = @Name), @Uid, @Name, @Price, 1)";
+
+                        int currentUID = UserSession.SessionUID;
 
                         using (SqlCommand insertCommand = new SqlCommand(insertQuery, con))
                         {
                             insertCommand.Parameters.AddWithValue("@Name", name);
                             insertCommand.Parameters.AddWithValue("@Price", price);
+                            insertCommand.Parameters.AddWithValue("@Uid", currentUID);
                             insertCommand.ExecuteNonQuery();
                         }
                     }

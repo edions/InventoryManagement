@@ -12,12 +12,17 @@ namespace InventoryApp.Managers
         // Fetch data from Cart
         public DataTable GetCartItems()
         {
+            int currentUID = UserSession.SessionUID;
+
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT Name, Price, Quantity, ProductId FROM [Cart]", con))
+                string query = "SELECT Name, Price, Quantity, ProductId FROM [Cart] WHERE Uid = @Uid";
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    cmd.Parameters.AddWithValue("@Uid", currentUID);
+
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -82,15 +87,17 @@ namespace InventoryApp.Managers
         //Count items on Cart
         public int GetCartItemCount()
         {
+            int currentUID = UserSession.SessionUID;
             int itemCount = 0;
 
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
 
-                string query = "SELECT COUNT(*) FROM Cart";
+                string query = "SELECT COUNT(*) FROM Cart WHERE Uid = @Uid";
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
+                    command.Parameters.AddWithValue("@Uid", currentUID);
                     itemCount = (int)command.ExecuteScalar();
                 }
             }
