@@ -15,11 +15,15 @@ namespace InventoryApp.InventoryApp.dlg
         //FETCH DATA FROM TRANSACTION TABLE
         private void DisplayTransaction()
         {
+            int currentUID = UserSession.SessionUID;
+
             using (SqlConnection con = ConnectionManager.GetConnection())
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT Date, Subtotal, DiscountPercent, DiscountAmount, Total, Change, TransactionId FROM [Transaction] ", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT Date, Subtotal, DiscountPercent, DiscountAmount, Total, Change, TransactionId FROM [Transaction] WHERE Uid = @Uid", con))
                 {
+                    cmd.Parameters.AddWithValue("@Uid", currentUID);
+
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);

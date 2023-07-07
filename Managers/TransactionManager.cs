@@ -40,6 +40,8 @@ namespace InventoryApp.Managers
         {
             con.Open();
 
+            int currentUID = UserSession.SessionUID;
+
             // Get the quantity from the Cart table and update the product stock
             string updateStockQuery = "UPDATE Product SET Stock = Stock - Cart.Quantity FROM Product INNER JOIN Cart ON Product.Id = Cart.ProductId";
             using (SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, con))
@@ -47,7 +49,8 @@ namespace InventoryApp.Managers
                 updateStockCommand.ExecuteNonQuery();
             }
 
-            string insertQuery = "INSERT INTO [Transaction] (TransactionId, Subtotal, Cash, DiscountPercent, DiscountAmount, [Change], Total, Date) VALUES (@TransactionId, @Subtotal, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Total, @Date)";
+            string insertQuery = "INSERT INTO [Transaction] (TransactionId, Subtotal, Cash, DiscountPercent, DiscountAmount, [Change], Total, Date, Uid)" +
+                                 "VALUES (@TransactionId, @Subtotal, @Cash, @DiscountPercent, @DiscountAmount, @Change, @Total, @Date, @Uid)";
 
             using (SqlCommand command = new SqlCommand(insertQuery, con))
             {
@@ -59,6 +62,7 @@ namespace InventoryApp.Managers
                 command.Parameters.AddWithValue("@Change", "$" + change.ToString());
                 command.Parameters.AddWithValue("@Total", "$" + total.ToString());
                 command.Parameters.AddWithValue("@Date", currentDate);
+                command.Parameters.AddWithValue("@Uid", currentUID);
                 command.ExecuteNonQuery();
             }
 
