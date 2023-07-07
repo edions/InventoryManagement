@@ -3,6 +3,8 @@ using InventoryApp.Managers;
 using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
 using InventoryApp.InventoryApp.Views;
+using System.Security.Cryptography;
+using InventoryApp.Views;
 
 namespace InventoryApp.InventoryApp
 {
@@ -77,6 +79,15 @@ namespace InventoryApp.InventoryApp
             {
                 SwitchForm(new Transaction());
             }
+        }
+
+        // LOGOUT BUTTON
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserAuth userauth = new UserAuth();
+            userauth.FormClosed += (s, args) => this.Close();
+            userauth.Show();
+            Hide();
         }
 
         // CART COUNTER
