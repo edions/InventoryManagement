@@ -56,7 +56,7 @@ namespace InventoryApp.Views
                     if (uid != 0)
                     {
                         UserSession.SessionUID = uid;
-                        MainView mainpage = new MainView();
+                        MainView mainpage = new MainView(username);
                         mainpage.FormClosed += (s, args) => this.Close();
                         mainpage.Show();
                         Hide();

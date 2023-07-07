@@ -11,10 +11,12 @@ namespace InventoryApp.InventoryApp
     public partial class MainView : Form
     {
         private Form currentForm;
-        public MainView()
+        public MainView(string username)
         {
             InitializeComponent();
             SwitchForm(new Product());
+
+            button1.Text = "Logout (" + username + ")";
 
             // Initialize Cart item counter
             itemCountTimer = new Timer
