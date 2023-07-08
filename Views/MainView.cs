@@ -3,7 +3,6 @@ using InventoryApp.Managers;
 using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
 using InventoryApp.InventoryApp.Views;
-using System.Security.Cryptography;
 using InventoryApp.Views;
 
 namespace InventoryApp.InventoryApp

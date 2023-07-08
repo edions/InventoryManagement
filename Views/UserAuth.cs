@@ -1,6 +1,5 @@
 ﻿using InventoryApp.InventoryApp;
 using InventoryApp.Managers;
-using InventoryApp.Modules;
 using System.Windows.Forms;
 using System;
 
