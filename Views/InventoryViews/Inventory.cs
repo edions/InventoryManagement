@@ -6,10 +6,10 @@ using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp
 {
-    public partial class Product : Form
+    public partial class Inventory : Form
     {
         private readonly ProductManager productManager;
-        public Product()
+        public Inventory()
         {
             InitializeComponent();
             productManager = new ProductManager();

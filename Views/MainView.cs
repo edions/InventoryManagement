@@ -13,7 +13,7 @@ namespace InventoryApp.InventoryApp
         public MainView(string username)
         {
             InitializeComponent();
-            SwitchForm(new Product());
+            SwitchForm(new Inventory());
 
             button1.Text = "Logout (" + username + ")";
 
@@ -51,7 +51,7 @@ namespace InventoryApp.InventoryApp
         {
             if (radioButton1.Checked)
             {
-                SwitchForm(new Product());
+                SwitchForm(new Inventory());
             }
         }
 

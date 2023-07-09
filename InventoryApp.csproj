@@ -119,28 +119,28 @@
     <Compile Include="Views\CategoryViews\Category.Designer.cs">
       <DependentUpon>Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductViews\AddStock.cs">
+    <Compile Include="Views\InventoryViews\AddStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ProductViews\AddStock.Designer.cs">
+    <Compile Include="Views\InventoryViews\AddStock.Designer.cs">
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductViews\History.cs">
+    <Compile Include="Views\InventoryViews\History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ProductViews\History.Designer.cs">
+    <Compile Include="Views\InventoryViews\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductViews\Product.cs">
+    <Compile Include="Views\InventoryViews\Inventory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ProductViews\Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
+    <Compile Include="Views\InventoryViews\Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductViews\ProductDialog.cs">
+    <Compile Include="Views\InventoryViews\ProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ProductViews\ProductDialog.Designer.cs">
+    <Compile Include="Views\InventoryViews\ProductDialog.Designer.cs">
       <DependentUpon>ProductDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -175,16 +175,16 @@
     <EmbeddedResource Include="Views\CategoryViews\Category.resx">
       <DependentUpon>Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProductViews\AddStock.resx">
+    <EmbeddedResource Include="Views\InventoryViews\AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProductViews\History.resx">
+    <EmbeddedResource Include="Views\InventoryViews\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProductViews\Product.resx">
-      <DependentUpon>Product.cs</DependentUpon>
+    <EmbeddedResource Include="Views\InventoryViews\Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProductViews\ProductDialog.resx">
+    <EmbeddedResource Include="Views\InventoryViews\ProductDialog.resx">
       <DependentUpon>ProductDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
