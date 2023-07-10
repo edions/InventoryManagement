@@ -73,9 +73,13 @@ namespace InventoryApp.Managers
         public void DeleteCartData()
         {
             con.Open();
-            string deleteQuery = "DELETE FROM [Cart]";
+
+            int currentUID = UserSession.SessionUID;
+
+            string deleteQuery = "DELETE FROM [Cart] WHERE Uid = @Uid";
             using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, con))
             {
+                deleteCommand.Parameters.AddWithValue("@Uid", currentUID);
                 deleteCommand.ExecuteNonQuery();
             }
 
