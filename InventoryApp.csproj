@@ -70,22 +70,22 @@
     <Compile Include="Modules\PointOfSale.cs" />
     <Compile Include="Modules\TransactionIdGenerator.cs" />
     <Compile Include="Modules\UserSession.cs" />
-    <Compile Include="Views\CartViews\Cart.cs">
+    <Compile Include="Views\SaleViews\Sale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CartViews\Cart.Designer.cs">
-      <DependentUpon>Cart.cs</DependentUpon>
+    <Compile Include="Views\SaleViews\Sale.Designer.cs">
+      <DependentUpon>Sale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CartViews\Checkout.cs">
+    <Compile Include="Views\SaleViews\Checkout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CartViews\Checkout.Designer.cs">
+    <Compile Include="Views\SaleViews\Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CartViews\Quantity.cs">
+    <Compile Include="Views\SaleViews\Quantity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CartViews\Quantity.Designer.cs">
+    <Compile Include="Views\SaleViews\Quantity.Designer.cs">
       <DependentUpon>Quantity.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TransactionView\Details.cs">
@@ -151,13 +151,13 @@
     <Compile Include="Views\UserAuth.Designer.cs">
       <DependentUpon>UserAuth.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\CartViews\Cart.resx">
-      <DependentUpon>Cart.cs</DependentUpon>
+    <EmbeddedResource Include="Views\SaleViews\Sale.resx">
+      <DependentUpon>Sale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CartViews\Checkout.resx">
+    <EmbeddedResource Include="Views\SaleViews\Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CartViews\Quantity.resx">
+    <EmbeddedResource Include="Views\SaleViews\Quantity.resx">
       <DependentUpon>Quantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TransactionView\Details.resx">

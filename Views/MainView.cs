@@ -69,7 +69,7 @@ namespace InventoryApp.InventoryApp
         {
             if (radioButton3.Checked)
             {
-                SwitchForm(new Cart());
+                SwitchForm(new Sale());
             }
         }
 
@@ -99,7 +99,7 @@ namespace InventoryApp.InventoryApp
         {
             CartManager cartManager = new CartManager();
             int cartItemCount = cartManager.GetCartItemCount();
-            radioButton3.Text = "Cart (" + cartItemCount.ToString() + ")";
+            radioButton3.Text = "Sale (" + cartItemCount.ToString() + ")";
         }
     }
 }

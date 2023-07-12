@@ -5,10 +5,10 @@ using InventoryApp.Managers;
 
 namespace InventoryApp.InventoryApp.Views
 {
-    public partial class Cart : Form
+    public partial class Sale : Form
     {
         private readonly CartManager cartManager;
-        public Cart()
+        public Sale()
         {
             InitializeComponent();
             cartManager = new CartManager();

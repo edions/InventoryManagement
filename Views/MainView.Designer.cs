@@ -37,12 +37,14 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.itemCountTimer = new System.Windows.Forms.Timer(this.components);
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.radioButton5);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.radioButton4);
             this.panel1.Controls.Add(this.radioButton3);
@@ -70,7 +72,7 @@
             // 
             this.radioButton4.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton4.Location = new System.Drawing.Point(1, 165);
+            this.radioButton4.Location = new System.Drawing.Point(1, 204);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(165, 38);
             this.radioButton4.TabIndex = 3;
@@ -83,11 +85,11 @@
             // 
             this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton3.Location = new System.Drawing.Point(1, 126);
+            this.radioButton3.Location = new System.Drawing.Point(1, 165);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(165, 38);
             this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "Cart";
+            this.radioButton3.Text = "Sales";
             this.radioButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
@@ -95,14 +97,12 @@
             // radioButton1
             // 
             this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton1.Checked = true;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton1.Location = new System.Drawing.Point(1, 48);
+            this.radioButton1.Location = new System.Drawing.Point(1, 87);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(165, 38);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Home";
+            this.radioButton1.Text = "Product";
             this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
@@ -111,7 +111,7 @@
             // 
             this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton2.Location = new System.Drawing.Point(1, 87);
+            this.radioButton2.Location = new System.Drawing.Point(1, 126);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(165, 38);
             this.radioButton2.TabIndex = 1;
@@ -133,6 +133,19 @@
             // itemCountTimer
             // 
             this.itemCountTimer.Tick += new System.EventHandler(this.itemCountTimer_Tick);
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton5.Checked = true;
+            this.radioButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton5.Location = new System.Drawing.Point(1, 48);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(165, 38);
+            this.radioButton5.TabIndex = 5;
+            this.radioButton5.Text = "Dashboard";
+            this.radioButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton5.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -160,5 +173,6 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Timer itemCountTimer;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }

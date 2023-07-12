@@ -1,6 +1,6 @@
 ﻿namespace InventoryApp.InventoryApp.Views
 {
-    partial class Cart
+    partial class Sale
     {
         /// <summary>
         /// Required designer variable.
