@@ -70,6 +70,12 @@
     <Compile Include="Modules\PointOfSale.cs" />
     <Compile Include="Modules\TransactionIdGenerator.cs" />
     <Compile Include="Modules\UserSession.cs" />
+    <Compile Include="Views\DashboardViews\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DashboardViews\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SaleViews\Sale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     <Compile Include="Views\UserAuth.Designer.cs">
       <DependentUpon>UserAuth.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\DashboardViews\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\SaleViews\Sale.resx">
       <DependentUpon>Sale.cs</DependentUpon>
     </EmbeddedResource>

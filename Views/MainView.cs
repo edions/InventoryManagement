@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
 using InventoryApp.InventoryApp.Views;
 using InventoryApp.Views;
+using InventoryApp.Views.DashboardViews;
 
 namespace InventoryApp.InventoryApp
 {
@@ -13,7 +14,7 @@ namespace InventoryApp.InventoryApp
         public MainView(string username)
         {
             InitializeComponent();
-            SwitchForm(new Inventory());
+            SwitchForm(new Dashboard());
 
             button1.Text = "Logout (" + username + ")";
 
@@ -44,6 +45,15 @@ namespace InventoryApp.InventoryApp
             newForm.Show();
 
             currentForm = newForm;
+        }
+
+        // DASHBOARD
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton5.Checked)
+            {
+                SwitchForm(new Dashboard());
+            }
         }
 
         //HOME TAB
