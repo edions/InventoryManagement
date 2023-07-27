@@ -1,4 +1,4 @@
-﻿namespace InventoryApp.Views.DashboardViews
+﻿namespace InventoryApp.Views.Dashboard
 {
     partial class Dashboard
     {

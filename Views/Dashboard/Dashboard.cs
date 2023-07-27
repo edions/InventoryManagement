@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventoryApp.Views.DashboardViews
+namespace InventoryApp.Views.Dashboard
 {
     public partial class Dashboard : Form
     {

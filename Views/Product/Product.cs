@@ -6,10 +6,10 @@ using InventoryApp.InventoryApp.dlg;
 
 namespace InventoryApp
 {
-    public partial class Inventory : Form
+    public partial class Product : Form
     {
         private readonly ProductManager productManager;
-        public Inventory()
+        public Product()
         {
             InitializeComponent();
             productManager = new ProductManager();
@@ -143,7 +143,7 @@ namespace InventoryApp
         {
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn
             {
-                Text = "Add to Cart",
+                Text = "Add",
                 UseColumnTextForButtonValue = true
             };
             dataGridView1.Columns.Add(buttonColumn);

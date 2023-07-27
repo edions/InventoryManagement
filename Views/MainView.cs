@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
 using InventoryApp.InventoryApp.Views;
 using InventoryApp.Views;
-using InventoryApp.Views.DashboardViews;
+using InventoryApp.Views.Dashboard;
 
 namespace InventoryApp.InventoryApp
 {
@@ -61,7 +61,7 @@ namespace InventoryApp.InventoryApp
         {
             if (radioButton1.Checked)
             {
-                SwitchForm(new Inventory());
+                SwitchForm(new Product());
             }
         }
 

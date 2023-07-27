@@ -70,46 +70,46 @@
     <Compile Include="Modules\PointOfSale.cs" />
     <Compile Include="Modules\TransactionIdGenerator.cs" />
     <Compile Include="Modules\UserSession.cs" />
-    <Compile Include="Views\DashboardViews\Dashboard.cs">
+    <Compile Include="Views\Dashboard\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DashboardViews\Dashboard.Designer.cs">
+    <Compile Include="Views\Dashboard\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SaleViews\Sale.cs">
+    <Compile Include="Views\Sale\Sale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SaleViews\Sale.Designer.cs">
+    <Compile Include="Views\Sale\Sale.Designer.cs">
       <DependentUpon>Sale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SaleViews\Checkout.cs">
+    <Compile Include="Views\Sale\Checkout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SaleViews\Checkout.Designer.cs">
+    <Compile Include="Views\Sale\Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SaleViews\Quantity.cs">
+    <Compile Include="Views\Sale\Quantity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SaleViews\Quantity.Designer.cs">
+    <Compile Include="Views\Sale\Quantity.Designer.cs">
       <DependentUpon>Quantity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TransactionView\Details.cs">
+    <Compile Include="Views\Transaction\Details.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TransactionView\Details.Designer.cs">
+    <Compile Include="Views\Transaction\Details.Designer.cs">
       <DependentUpon>Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TransactionView\Transaction.cs">
+    <Compile Include="Views\Transaction\Transaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TransactionView\Transaction.Designer.cs">
+    <Compile Include="Views\Transaction\Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryViews\CatDialog.cs">
+    <Compile Include="Views\Category\CatDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CategoryViews\CatDialog.Designer.cs">
+    <Compile Include="Views\Category\CatDialog.Designer.cs">
       <DependentUpon>CatDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Managers\ConnectionManager.cs" />
@@ -119,34 +119,34 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryViews\Category.cs">
+    <Compile Include="Views\Category\Category.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CategoryViews\Category.Designer.cs">
+    <Compile Include="Views\Category\Category.Designer.cs">
       <DependentUpon>Category.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\InventoryViews\AddStock.cs">
+    <Compile Include="Views\Product\AddStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\InventoryViews\AddStock.Designer.cs">
+    <Compile Include="Views\Product\AddStock.Designer.cs">
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\InventoryViews\History.cs">
+    <Compile Include="Views\Product\History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\InventoryViews\History.Designer.cs">
+    <Compile Include="Views\Product\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\InventoryViews\Inventory.cs">
+    <Compile Include="Views\Product\Product.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\InventoryViews\Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
+    <Compile Include="Views\Product\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\InventoryViews\ProductDialog.cs">
+    <Compile Include="Views\Product\ProductDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\InventoryViews\ProductDialog.Designer.cs">
+    <Compile Include="Views\Product\ProductDialog.Designer.cs">
       <DependentUpon>ProductDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -157,43 +157,43 @@
     <Compile Include="Views\UserAuth.Designer.cs">
       <DependentUpon>UserAuth.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\DashboardViews\Dashboard.resx">
+    <EmbeddedResource Include="Views\Dashboard\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SaleViews\Sale.resx">
+    <EmbeddedResource Include="Views\Sale\Sale.resx">
       <DependentUpon>Sale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SaleViews\Checkout.resx">
+    <EmbeddedResource Include="Views\Sale\Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SaleViews\Quantity.resx">
+    <EmbeddedResource Include="Views\Sale\Quantity.resx">
       <DependentUpon>Quantity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TransactionView\Details.resx">
+    <EmbeddedResource Include="Views\Transaction\Details.resx">
       <DependentUpon>Details.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TransactionView\Transaction.resx">
+    <EmbeddedResource Include="Views\Transaction\Transaction.resx">
       <DependentUpon>Transaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CategoryViews\CatDialog.resx">
+    <EmbeddedResource Include="Views\Category\CatDialog.resx">
       <DependentUpon>CatDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CategoryViews\Category.resx">
+    <EmbeddedResource Include="Views\Category\Category.resx">
       <DependentUpon>Category.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\InventoryViews\AddStock.resx">
+    <EmbeddedResource Include="Views\Product\AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\InventoryViews\History.resx">
+    <EmbeddedResource Include="Views\Product\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\InventoryViews\Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Product\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\InventoryViews\ProductDialog.resx">
+    <EmbeddedResource Include="Views\Product\ProductDialog.resx">
       <DependentUpon>ProductDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
