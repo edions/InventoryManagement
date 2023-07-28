@@ -68,9 +68,9 @@
     <Compile Include="Managers\StockManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Managers\AccountManager.cs" />
-    <Compile Include="Modules\PointOfSale.cs" />
-    <Compile Include="Modules\TransactionIdGenerator.cs" />
-    <Compile Include="Modules\UserSession.cs" />
+    <Compile Include="Utility\PointOfSale.cs" />
+    <Compile Include="Utility\TransactionIdGenerator.cs" />
+    <Compile Include="Utility\UserSession.cs" />
     <Compile Include="Views\Dashboard\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +233,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

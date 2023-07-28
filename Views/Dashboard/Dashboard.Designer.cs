@@ -61,11 +61,11 @@
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(59, 76);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 76);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(643, 88);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(707, 88);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // panel1
@@ -76,9 +76,9 @@
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(163, 3);
+            this.panel1.Location = new System.Drawing.Point(179, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(154, 82);
+            this.panel1.Size = new System.Drawing.Size(170, 82);
             this.panel1.TabIndex = 1;
             // 
             // label2
@@ -96,9 +96,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Total Products";
+            this.label1.Text = "Total Revenue";
             // 
             // panel2
             // 
@@ -110,7 +110,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(154, 82);
+            this.panel2.Size = new System.Drawing.Size(170, 82);
             this.panel2.TabIndex = 2;
             // 
             // label3
@@ -128,9 +128,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 7);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Total Categories";
+            this.label4.Text = "Total Products";
             // 
             // panel3
             // 
@@ -140,9 +140,9 @@
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(483, 3);
+            this.panel3.Location = new System.Drawing.Point(531, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(157, 82);
+            this.panel3.Size = new System.Drawing.Size(173, 82);
             this.panel3.TabIndex = 3;
             // 
             // label5
@@ -160,9 +160,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(16, 7);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Total Revenue";
+            this.label6.Text = "Categories";
             // 
             // panel4
             // 
@@ -172,9 +172,9 @@
             this.panel4.BackColor = System.Drawing.Color.Gainsboro;
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(323, 3);
+            this.panel4.Location = new System.Drawing.Point(355, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(154, 82);
+            this.panel4.Size = new System.Drawing.Size(170, 82);
             this.panel4.TabIndex = 4;
             // 
             // label7
