@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using InventoryApp.Managers;
+using InventoryApp.Data;
 using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
 

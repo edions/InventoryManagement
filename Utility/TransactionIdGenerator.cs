@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 
-namespace InventoryApp.Modules
+namespace InventoryApp.Utility
 {
     class TransactionIdGenerator
     {

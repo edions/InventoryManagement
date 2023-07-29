@@ -1,7 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace InventoryApp.Managers
+namespace InventoryApp.Data
 {
     class AccountManager
     {

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace InventoryApp.Managers
+namespace InventoryApp.Data
 {
     internal class TransactionManager
     {

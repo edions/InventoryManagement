@@ -62,12 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\CartManager.cs" />
-    <Compile Include="Managers\CategoryManager.cs" />
-    <Compile Include="Managers\ProductManager.cs" />
-    <Compile Include="Managers\StockManager.cs" />
-    <Compile Include="Managers\TransactionManager.cs" />
-    <Compile Include="Managers\AccountManager.cs" />
+    <Compile Include="Data\CartManager.cs" />
+    <Compile Include="Data\CategoryManager.cs" />
+    <Compile Include="Data\ProductManager.cs" />
+    <Compile Include="Data\StockManager.cs" />
+    <Compile Include="Data\TransactionManager.cs" />
+    <Compile Include="Data\AccountManager.cs" />
     <Compile Include="Utility\PointOfSale.cs" />
     <Compile Include="Utility\TransactionIdGenerator.cs" />
     <Compile Include="Utility\UserSession.cs" />
@@ -113,7 +113,7 @@
     <Compile Include="Views\Category\CatDialog.Designer.cs">
       <DependentUpon>CatDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Managers\ConnectionManager.cs" />
+    <Compile Include="Data\ConnectionManager.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,8 +234,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

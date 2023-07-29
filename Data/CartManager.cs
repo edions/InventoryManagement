@@ -3,7 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace InventoryApp.Managers
+namespace InventoryApp.Data
 {
     public class CartManager
     {
